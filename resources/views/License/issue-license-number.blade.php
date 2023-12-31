@@ -1,7 +1,6 @@
 <x-layouts.app>
     <div class="container-xxl flex-grow-1 container-p-y">
-        <form method="POST" action="/issue/licensenumber/{{$userid}}/{{$id}}" enctype="multipart/form-data">
-
+        <form method="POST" action="/issue/licensenumber/{{$userid}}/{{$id}}">
             @csrf
             <!-- Basic Layout -->
             <div class="row">
@@ -16,19 +15,20 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">License No</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="License_No"
-                                        placeholder=""/>
-                                    @if($errors->has('License_No'))
-                                        <span class="alert alert-danger"> {{ $errors->first('License_No') }}</span>
-                                        <br>
+                                    <label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            name="License_No"
+                                            value="{{ $nextLicenseNumber }}"
+                                            placeholder=""/>
+                                        @if($errors->has('License_No'))
+                                            <span class="alert alert-danger"> {{ $errors->first('License_No') }}</span>
+                                            <br>
                                     @endif
+
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -39,12 +39,9 @@
                             <button type="submit" class="btn btn-primary">Issued</button>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </form>
-    </div>
     </div>
 </x-layouts.app>
 

@@ -73,6 +73,19 @@
             {{--            <p>Hello, {{ auth()->user()->name }}!</p>--}}
         @endif
 
+        @if(auth()->check())
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <!-- Pass the authenticated user's ID in the URL -->
+                    <a href="/show/print_ready_applications/{{ auth()->id() }}" class="menu-link">
+                        <div data-i18n="Without menu">Print Ready Applications</div>
+                    </a>
+                </li>
+            </ul>
+            <!-- Display user information -->
+            {{--            <p>Hello, {{ auth()->user()->name }}!</p>--}}
+        @endif
+
     </li>
 
     <!-- Salary -->

@@ -8,9 +8,9 @@ use App\Models\LicenseCategory;
 use App\Models\Owner;
 use App\Models\Payment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Carbon\Carbon;
 
 class LicenseVerificationController extends Controller
 {
@@ -79,20 +79,56 @@ class LicenseVerificationController extends Controller
 
     public function issue_License($userid, $id): View
     {
+
+        $lastLicenseNumber = LicenseApplication::whereNotNull('License_No')->orderBy('id', 'desc')->value('License_No');
+        $nextLicenseNumber = $lastLicenseNumber ? ++$lastLicenseNumber : 1;
         $license = LicenseApplication::where('id', $id)->first();
 
         return \view('license.issue-license-number', [
             'userid' => $userid,
             'id' => $id,
+            'nextLicenseNumber' => $nextLicenseNumber,
         ]);
     }
 
-    public function issue_License_number($userid, $id)
+    public function issue_License_number($userid, $id, Request $request): View
+    {
+
+        $license = LicenseApplication::where('id', $id)->first();
+        $expireDate = Carbon::now()->addYears(2);
+        $procLvl = 'Issued';
+        $license->update([
+            'ProcLvl' => $procLvl,
+            'License_No' => $request->License_No,
+            'Issue_Date' => Carbon::now(),
+            'Expire_Date' => $expireDate,
+        ]);
+        $successMessage = 'License Number Issued Successfully';
+        return \view('license.license-number-issued', compact('successMessage'));
+
+    }
+
+    public function show_ReadyforPrint($userid): View
+    {
+        $license = LicenseApplication::where('ProcLvl', 'Issued')
+            ->wherenotnull('License_No')
+            ->wherenotnull('Issue_Date')
+            ->wherenotnull('Expire_Date')
+            ->get();
+
+        return \view('license.show-print-ready-applications', [
+            'userid' => $userid,
+            'licenses' => $license,
+        ]);
+    }
+
+    public function print_license($userid, $id)
     {
         $license = LicenseApplication::where('id', $id)->first();
-        $issueDate = Carbon::now();
-        $expireDate = $issueDate->addYears(2);
-
-        
+        return \view('license.license-print-layout', [
+            'userid' => $userid,
+            'licenses' => $license,
+        ]);
     }
+
 }

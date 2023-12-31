@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ApplicantDataEntryRequest;
 use App\Models\Business;
 use App\Models\BusinessType;
 use App\Models\District;
@@ -28,7 +29,7 @@ class LicenseApplicationController extends Controller
         ]);
     }
 
-    public function store($id, Request $request): RedirectResponse
+    public function store($id, ApplicantDataEntryRequest $request): RedirectResponse
     {
         $path = $request->file('Profile_Image')->store('', 'public');
         $cnicpath = $request->file('CNIC_Image')->store('', 'public');

@@ -22,16 +22,19 @@
                         <td>{{ $serialNumber++ }}</td>
                         <td>
 
-                            @if($license->ProcLvl == 'License Approved')
+                            @if($license->ProcLvl == 'Issued')
                                 <span class="text-success">{{ $license->ProcLvl }}</span><br>
                             @endif
                             License Application No: {{ $license->id }}<br>
+
 
                             @if($license->business->owner)
                                 Owner Name: {{ $license->business->owner->Applicant_Name }}<br>
                                 Owner Father Name: {{ $license->business->owner->Applicant_Father_Name }}<br>
                             @endif
-                            License Category: {{ $license->licenseCategory->License_Category_Name }}
+                            License Category: {{ $license->licenseCategory->License_Category_Name }}<br>
+                            License No: {{ $license->License_No }}
+
 
                         </td>
                         <td>
@@ -40,12 +43,13 @@
                                 Business Address: {{ $license->business->Business_Address }}<br>
                                 Contact Number: {{ $license->business->Contact_Number }}<br>
                                 District: {{ $license->business->district->District_Name }}<br>
-
                             @endif
+                            Issue Date: {{ $license->Issue_Date }}<br>
+                            Expire Date: {{ $license->Expire_Date }}
                         </td>
                         <td>
-                            <a href="/issue/license/{{ $userid }}/{{ $license->id }}">
-                                <button type="button" class="btn rounded-pill btn-primary">Issue License Number</button>
+                            <a href="/print/license/{{ $userid }}/{{ $license->id }}">
+                                <button type="button" class="btn rounded-pill btn-primary">Print License</button>
                             </a>
                         </td>
                     </tr>

@@ -63,6 +63,8 @@ Route::group([
     Route::get('/show/applications/{userid}','show')->name('show');
     Route::get('/issue/license/{userid}/{id}','issue_License')->name('issue-License');
     Route::post('/issue/licensenumber/{userid}/{id}','issue_License_number')->name('issue_License_number');
+    Route::get('/show/print_ready_applications/{userid}','show_ReadyforPrint')->name('show_ReadyforPrint');
+    Route::get('/print/license/{userid}/{id}','print_license')->name('print_license');
 });
 
 require __DIR__ . '/auth.php';
