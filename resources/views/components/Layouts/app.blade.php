@@ -30,6 +30,7 @@
         rel="stylesheet"
     />
 
+
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="/assets/vendor/fonts/boxicons.css"/>
 

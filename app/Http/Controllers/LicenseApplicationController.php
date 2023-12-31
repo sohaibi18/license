@@ -34,14 +34,23 @@ class LicenseApplicationController extends Controller
     {
         $path = $request->file('Profile_Image')->store('', 'public');
         $cnicpath = $request->file('CNIC_Image')->store('', 'public');
-        $affidavitpath = $request->file('Affidavit')->store('', 'public');
-        $medcertpath = $request->file('Medical_Certificate')->store('', 'public');
+
+        $affidavitpath = null;
+        if ($request->hasFile('Affidavit')) {
+            $affidavitpath = $request->file('Affidavit')->store('', 'public');
+        }
+
+        $medcertpath = null;
+        if ($request->hasFile('Medical_Certificate')) {
+            $medcertpath = $request->file('Medical_Certificate')->store('', 'public');
+        }
+
         $personaldata = Owner::create([
             'Applicant_Name' => $request->Applicant_Name,
             'Applicant_Father_Name' => $request->Applicant_Father_Name,
             'CNIC' => $request->CNIC,
             'Mobile_Number' => $request->Mobile_Number,
-            'Email' => $request->Email,
+            'Email' => $request->has('Email') ? $request->Email : null,
             'Personal_Address' => $request->Personal_Address,
             'Gender' => $request->Gender,
             'Profile_Image' => $path,
@@ -55,10 +64,10 @@ class LicenseApplicationController extends Controller
             'Business_Name' => $request->Business_Name,
             'Business_Address' => $request->Business_Address,
             'Contact_Number' => $request->Contact_Number,
-            'Business_Email' => $request->Business_Email,
-            'Website' => $request->Website,
-            'Start_Date' => $request->Start_Date,
-            'Food_Handlers' => $request->Food_Handlers,
+            'Business_Email' => $request->has('Business_Email') ? $request->Business_Email : null,
+            'Website' => $request->has('Website') ? $request->Website : null,
+            'Start_Date' => $request->has('Start_Date') ? $request->Start_Date : null,
+            'Food_Handlers' => $request->has('Food_Handlers') ? $request->Food_Handlers : null,
             'district_id' => $request->districts[0],
             'business_type_id' => $request->businesstypes[0],
             'user_id' => $user->id,

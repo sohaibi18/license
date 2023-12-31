@@ -11,7 +11,7 @@ class ApplicantDataEntryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,28 +25,27 @@ class ApplicantDataEntryRequest extends FormRequest
             //Owner Details
             'Applicant_Name' => ['required', 'regex:/^[a-zA-Z\s]+$/i', 'max:20', 'min:3'],
             'Applicant_Father_Name' => ['required', 'regex:/^[a-zA-Z\s]+$/i', 'max:20', 'min:3'],
-            'CNIC' => ['required', 'numeric', 'regex:/^\d{5}-\d{7}-\d{1}$/'],
-            'Mobile_Number' => ['required', 'numeric', 'regex:/^\d{4}-\d{7}$/'],
+            'CNIC' => ['required', 'regex:/^\d{5}-\d{7}-\d{1}$/'],
+            'Mobile_Number' => ['required', 'regex:/^\d{4}-\d{7}$/'],
             'Email' => ['nullable', 'email'],
             'Personal_Address' => ['required', 'regex:/^[a-zA-Z0-9\s]+$/'],
-            'Gender' => ['required', 'in:Male,Female,Other'],
+            'Gender' => ['required'],
             'Profile_Image' => ['required', 'image'],
             'CNIC_Image' => ['required', 'image'],
-            'district_id' => ['required', 'in:1'],
+            'district_id' => ['required'],
 
             //Business Details
             'Business_Name' => ['required', 'regex:/^[a-zA-Z\s]+$/i'],
             'Business_Address' => ['required', 'regex:/^[a-zA-Z0-9\s]+$/'],
-            'District_Name' => ['required_if:Business_Address,!=null'],
-            'Contact_Number' => ['required', 'numeric', 'regex:/^\d{4}-\d{7}$/'],
+            'Contact_Number' => ['required', 'regex:/^\d{4}-\d{7}$/'],
             'Business_Email' => ['nullable', 'email'],
             'Website' => ['nullable', 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/'],
             'Start_Date' => ['nullable', 'date', 'before_or_equal:today'],
             'Food_Handlers' => ['nullable', 'numeric'],
-            'business_type_id' => ['required', 'in:1'],
+            'business_type_id' => ['required'],
 
             //Application Details
-            'license_category_id' => ['required', 'in:1'],
+            'license_category_id' => ['required'],
             'Affidavit' => ['nullable', 'image'],
             'Medical_Certificate' => ['nullable', 'image'],
         ];

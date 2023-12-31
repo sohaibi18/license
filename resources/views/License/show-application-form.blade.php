@@ -51,6 +51,7 @@
                                 class="form-control"
                                 name="CNIC"
                                 aria-describedby="basic-default-phone"/>
+                            <small class="text-muted">Enter your CNIC in the format: 12345-6789123-4</small>
                             @if($errors->has('CNIC'))
                                 <span class="alert alert-danger"> {{ $errors->first('CNIC') }}</span><br>
                             @endif
@@ -65,6 +66,7 @@
                                 name="Mobile_Number"
                                 aria-describedby="basic-icon-default-message2"
                             />
+                            <small class="text-muted">Enter your Mobile Number in the format: 1234-6789123</small>
                             @if($errors->has('Mobile_Number'))
                                 <span class="alert alert-danger"> {{ $errors->first('Mobile_Number') }}</span>
                                 <br>
@@ -81,6 +83,7 @@
                                 name="Email"
                                 aria-describedby="basic-icon-default-message2"
                             />
+                            <small class="text-muted">Enter your email in the format: example@mail.com</small>
                             @if($errors->has('Email'))
                                 <span class="alert alert-danger"> {{ $errors->first('Email') }}</span><br>
                             @endif
@@ -107,12 +110,12 @@
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Gender</label>
                         <div class="col-sm-8">
-                            <input
-                                id="basic-default-message"
-                                class="form-control"
-                                name="Gender"
-                                aria-describedby="basic-icon-default-message2"
-                            />
+                            <select class="form-control" name="Gender" id="genderSelect">
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
                             @if($errors->has('Gender'))
                                 <span class="alert alert-danger"> {{ $errors->first('Gender') }}</span><br>
                             @endif
@@ -213,6 +216,7 @@
                                 class="form-control"
                                 name="Contact_Number"
                                 aria-describedby="basic-default-phone"/>
+                            <small class="text-muted">Enter your Mobile Number in the format: 1234-6789123</small>
                             @if($errors->has('Contact_Number'))
                                 <span class="alert alert-danger"> {{ $errors->first('Contact_Number') }}</span><br>
                             @endif
@@ -227,6 +231,7 @@
                                 name="Business_Email"
                                 aria-describedby="basic-icon-default-message2"
                             />
+                            <small class="text-muted">Enter your email in the format: example@mail.com</small>
                             @if($errors->has('Business_Email'))
                                 <span class="alert alert-danger"> {{ $errors->first('Business_Email') }}</span>
                                 <br>
@@ -296,6 +301,7 @@
                             @endif
                         </div>
                     </div>
+
 
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Food Handlers</label>
@@ -389,3 +395,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+
