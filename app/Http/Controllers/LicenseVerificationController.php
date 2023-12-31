@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LicenseNumberIssueRequest;
 use App\Models\Business;
 use App\Models\LicenseApplication;
 use App\Models\LicenseCategory;
@@ -91,7 +92,7 @@ class LicenseVerificationController extends Controller
         ]);
     }
 
-    public function issue_License_number($userid, $id, Request $request): View
+    public function issue_License_number($userid, $id, LicenseNumberIssueRequest $request): View
     {
 
         $license = LicenseApplication::where('id', $id)->first();
@@ -122,7 +123,7 @@ class LicenseVerificationController extends Controller
         ]);
     }
 
-    public function print_license($userid, $id)
+    public function print_license($userid, $id): View
     {
         $license = LicenseApplication::where('id', $id)->first();
         return \view('license.license-print-layout', [

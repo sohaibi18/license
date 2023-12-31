@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ApplicantDataEntryRequest;
+use App\Http\Requests\PaymentDataEntryRequest;
 use App\Models\Business;
 use App\Models\BusinessType;
 use App\Models\District;
@@ -158,7 +159,7 @@ class LicenseApplicationController extends Controller
         ]);
     }
 
-    public function store_payment($id, Request $request): View
+    public function store_payment($id, PaymentDataEntryRequest $request): View
     {
         // Fetch the existing payment record
         $payment = Payment::where('license_application_id', $id)->first();

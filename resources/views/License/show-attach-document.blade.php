@@ -20,7 +20,7 @@
                                         class="form-control"
                                         name="Due_Amount"
                                         value="{{ $Due_Amount }}"
-                                        placeholder=""/>
+                                        readonly
                                     @if($errors->has('Due_Amount'))
                                         <span class="alert alert-danger"> {{ $errors->first('Due_Amount') }}</span>
                                         <br>
@@ -51,6 +51,7 @@
                                         class="form-control"
                                         name="Due_Date"
                                         value="{{ $Due_Date }}"
+                                        readonly
                                         aria-describedby="basic-default-phone"/>
                                     @if($errors->has('Due_Date'))
                                         <span class="alert alert-danger"> {{ $errors->first('Due_Date') }}</span><br>

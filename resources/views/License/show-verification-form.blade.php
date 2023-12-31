@@ -20,7 +20,7 @@
                                         class="form-control"
                                         name="Due_Amount"
                                         value="{{ $Due_Amount }}"
-                                        placeholder=""/>
+
                                     @if($errors->has('Due_Amount'))
                                         <span class="alert alert-danger"> {{ $errors->first('Due_Amount') }}</span>
                                         <br>
