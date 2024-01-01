@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
        // $this->call(BusinessTypeSeeder::class);
         //$this->call(DistrictSeeder::class);
       //  $this->call(LicenseCategorySeeder::class);
+      //  $this->call(UserSeeder::class);
     }
 }

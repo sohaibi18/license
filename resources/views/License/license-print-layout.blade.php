@@ -6,24 +6,13 @@
                 LICENSE CERTIFICATE UNDER SECTION 15 of KPFS&HFA Act, 2014<br>
                 THIS LICENSE IS NOT TRANSFERABLE AND FEE IS NOT REFUNDABLE<br><br><br>
             </div>
-            {{--            <div style="text-align: center;">--}}
-            {{--                License Category: {{ $licenses->licenseCategory->License_Category_Name }}--}}
-            {{--                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--}}
-            {{--                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--}}
-            {{--                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--}}
-            {{--                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--}}
-            {{--                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--}}
-            {{--                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--}}
-            {{--                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--}}
-            {{--                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--}}
-            {{--                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--}}
-            {{--                License No: {{ $licenses->License_No }}/DG/KPFS&HFA/2024--}}
-            {{--            </div>--}}
+
+
             <div style="text-align: center; display: flex; justify-content: space-between;">
-                <div style="flex: 2;margin-right: auto;">
+                <div style="text-align: left;">
                     License Category: {{ $licenses->licenseCategory->License_Category_Name }}
                 </div>
-                <div style="flex: 2;margin-left: auto;">
+                <div style="text-align: right;">
                     License No: {{ $licenses->License_No }}/DG/KPFS&HFA/2024<br><br><br>
                 </div>
             </div>
@@ -44,24 +33,27 @@
                         Pakhtunkhwa Food Safety and Halal Food Authority for <br>
                         the time being enforced. Therefore, license is issued subject to the compliance of the aforesaid
                         committment.
-                    </p>
+                    </p><br><br><br>
                 @endif
             </div>
-            <div style="text-align: left;">
-                <div style="text-align: center; display: inline-block;">
-                    Assistant Director<br>
-                    (Licensing)<br>
-                    KP Food Safety &<br>
-                    Halal Food Authority<br>
+            <div style="display: flex; justify-content: space-between;">
+                <div style="text-align: left;">
+                    <div style="text-align: center; display: inline-block;">
+                        Assistant Director<br>
+                        (Licensing)<br>
+                        KP Food Safety &<br>
+                        Halal Food Authority<br>
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="text-align: center; display: inline-block;">
+                        Director General<br>
+                        KP Food Safety &<br>
+                        Halal Food Authority<br>
+                    </div>
                 </div>
             </div>
-            <div style="text-align: right;">
-                <div style="text-align: center; display: inline-block;">
-                    Director General<br>
-                    KP Food Safety &<br>
-                    Halal Food Authority<br>
-                </div>
-            </div>
+
 
         </div>
     </div>

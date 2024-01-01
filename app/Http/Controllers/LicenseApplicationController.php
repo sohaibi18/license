@@ -32,6 +32,7 @@ class LicenseApplicationController extends Controller
 
     public function store($id, ApplicantDataEntryRequest $request): RedirectResponse
     {
+
         $path = $request->file('Profile_Image')->store('', 'public');
         $cnicpath = $request->file('CNIC_Image')->store('', 'public');
 

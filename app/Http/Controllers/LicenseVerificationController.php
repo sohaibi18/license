@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Carbon\Carbon;
+use Termwind\Components\Li;
 
 class LicenseVerificationController extends Controller
 {
@@ -115,11 +116,12 @@ class LicenseVerificationController extends Controller
             ->wherenotnull('License_No')
             ->wherenotnull('Issue_Date')
             ->wherenotnull('Expire_Date')
-            ->get();
+            ->paginate(10);
 
         return \view('license.show-print-ready-applications', [
             'userid' => $userid,
             'licenses' => $license,
+
         ]);
     }
 

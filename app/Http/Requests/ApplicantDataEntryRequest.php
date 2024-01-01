@@ -32,7 +32,7 @@ class ApplicantDataEntryRequest extends FormRequest
             'Gender' => ['required'],
             'Profile_Image' => ['required', 'image'],
             'CNIC_Image' => ['required', 'image'],
-            'district_id' => ['required'],
+
 
             //Business Details
             'Business_Name' => ['required', 'regex:/^[a-zA-Z\s]+$/i'],
@@ -42,10 +42,9 @@ class ApplicantDataEntryRequest extends FormRequest
             'Website' => ['nullable', 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/'],
             'Start_Date' => ['nullable', 'date', 'before_or_equal:today'],
             'Food_Handlers' => ['nullable', 'numeric'],
-            'business_type_id' => ['required'],
+
 
             //Application Details
-            'license_category_id' => ['required'],
             'Affidavit' => ['nullable', 'image'],
             'Medical_Certificate' => ['nullable', 'image'],
         ];

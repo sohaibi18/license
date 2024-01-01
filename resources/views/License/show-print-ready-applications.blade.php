@@ -13,11 +13,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                @php
-                    $serialNumber = 1;
-                @endphp
-
+                @if($licenses)
+                    @php
+                        $serialNumber = ($licenses->currentPage() - 1) * $licenses->perPage() + 1;
+                    @endphp
+                @endif
                 @foreach($licenses as $license)
+
                     <tr>
                         <td>{{ $serialNumber++ }}</td>
                         <td>
@@ -55,7 +57,13 @@
                     </tr>
                 @endforeach
                 </tbody>
+
             </table>
+            <div class="row">
+                <div class="col-md-12">
+                    {{ $licenses->links() }}
+                </div>
+            </div>
         </div>
     </div>
 </x-layouts.app>
