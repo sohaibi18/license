@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\ProductApplicationController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -39,6 +40,11 @@ class Owner extends Model
     public function business()
     {
         return $this->hasOne(Business::class);
+    }
+
+    public function product_applications(): HasMany
+    {
+        return $this->hasMany(ProductApplicationController::class);
     }
 
 

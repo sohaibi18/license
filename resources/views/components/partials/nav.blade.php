@@ -117,13 +117,22 @@
             <i class="menu-icon tf-icons bx bx-copy"></i>
             <div data-i18n="Extended UI">Product Registration</div>
         </a>
-        <ul class="menu-sub">
-            <li class="menu-item">
-                <a href="/salary/chart" class="menu-link">
-                    <div data-i18n="Perfect Scrollbar">Add Product Application</div>
-                </a>
-            </li>
-        </ul>
+        @if(auth()->check())
+            @php
+                $loggedInUserId = auth()->id();
+            @endphp
+            <ul class="menu-sub">
+                @if($loggedInUserId == 5 or $loggedInUserId == 1)
+                    <li class="menu-item">
+
+                        <!-- Pass the authenticated user's ID in the URL -->
+                        <a href="/show/product/application/form/{{ auth()->id() }}" class="menu-link">
+                            <div data-i18n="Without menu">Add Product Application</div>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+        @endif
     </li>
 
     <li class="menu-header small text-uppercase">

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Http\Controllers\ProductApplicationController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -53,7 +54,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(LicenseApplication::class);
     }
-
+    public function product_applications(): HasMany
+    {
+        return $this->hasMany(ProductApplicationController::class);
+    }
     public function payments()
     {
         return $this->belongsTo(Payment::class);

@@ -3,6 +3,7 @@
 use App\Http\Controllers\FinanceVerificationController;
 use App\Http\Controllers\LicenseApplicationController;
 use App\Http\Controllers\LicenseVerificationController;
+use App\Http\Controllers\ProductApplicationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -59,12 +60,19 @@ Route::group([
     Route::get('/application/license/verification/{userid}', 'display_For_Verification')->name('display_For_Verification');
     Route::get('/show/license/verification/form/{userid}/license/{id}', 'show_license_verification')
         ->name('show-license-verification');
-    Route::post('/license/verified/{id}/{userid}','license_verified')->name('license_verified');
-    Route::get('/show/applications/{userid}','show')->name('show');
-    Route::get('/issue/license/{userid}/{id}','issue_License')->name('issue-License');
-    Route::post('/issue/licensenumber/{userid}/{id}','issue_License_number')->name('issue_License_number');
-    Route::get('/show/print_ready_applications/{userid}','show_ReadyforPrint')->name('show_ReadyforPrint');
-    Route::get('/print/license/{userid}/{id}','print_license')->name('print_license');
+    Route::post('/license/verified/{id}/{userid}', 'license_verified')->name('license_verified');
+    Route::get('/show/applications/{userid}', 'show')->name('show');
+    Route::get('/issue/license/{userid}/{id}', 'issue_License')->name('issue-License');
+    Route::post('/issue/licensenumber/{userid}/{id}', 'issue_License_number')->name('issue_License_number');
+    Route::get('/show/print_ready_applications/{userid}', 'show_ReadyforPrint')->name('show_ReadyforPrint');
+    Route::get('/print/license/{userid}/{id}', 'print_license')->name('print_license');
+});
+
+Route::group([
+    'controller' => ProductApplicationController::class,
+    'middleware' => 'auth',
+], function () {
+    Route::get('/show/product/application/form/{userid}', 'show')->name('show-product-application-form');
 });
 
 require __DIR__ . '/auth.php';
