@@ -1,6 +1,6 @@
 <x-layouts.app>
     <div class="container-xxl flex-grow-1 container-p-y">
-        <form method="POST" action="/display/submitted/data/{{ $id }}" enctype="multipart/form-data">
+        <form method="POST" action="/store/product/data/{{ $id }}" enctype="multipart/form-data">
 
             @csrf
             <!-- Basic Layout -->
@@ -16,12 +16,35 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Owner CNIC</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="Business_Name"
-                                        placeholder=""/>
-                                    @error('Business_Name')
+
+                                    <input type="text" id="cnicInput" name="CNIC"/>
+
+                                    <div id="cnicStatus"></div>
+
+                                    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                                    <script>
+                                        $(document).ready(function () {
+                                            $('#cnicInput').on('input', function () {
+                                                var cnic = $(this).val();
+
+                                                $.ajax({
+                                                    url: "{{ route('check-cnic') }}",
+                                                    method: "POST",
+                                                    data: {"_token": "{{ csrf_token() }}", "CNIC": cnic}, // Use cnic instead of CNIC
+                                                    success: function (response) {
+                                                        if (cnic === '') {
+                                                            $('#cnicStatus').text('');
+                                                        } else if (response.exists) {
+                                                            $('#cnicStatus').text('CNIC exists!');
+                                                        } else {
+                                                            $('#cnicStatus').text('CNIC does not exist.');
+                                                        }
+                                                    }
+                                                });
+                                            });
+                                        });
+                                    </script>
+                                    @error('CNIC')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -30,12 +53,37 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Business Name</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="Business_Address"
-                                        placeholder=""/>
-                                    @error('Business_Address')
+
+                                    <input type="text" id="businessInput" name="Business_Name"/>
+                                    <div id="businessStatus"></div>
+                                    <div id="businessAddress"></div>
+
+                                    <script>
+                                        $(document).ready(function () {
+                                            $('#businessInput').on('input', function () {
+                                                var business = $(this).val();
+
+                                                $.ajax({
+                                                    url: "{{ route('check-business') }}",
+                                                    method: "POST",
+                                                    data: {"_token": "{{ csrf_token() }}", "Business_Name": business},
+                                                    success: function (response) {
+                                                        if (business === '') {
+                                                            $('#businessStatus').text('');
+                                                            $('#businessAddress').text('');
+                                                        } else if (response.exists) {
+                                                            $('#businessStatus').text('Business exists!');
+                                                            $('#businessAddress').text('Business Address: ' + response.address);
+                                                        } else {
+                                                            $('#businessStatus').text('Business does not exist.');
+                                                            $('#businessAddress').text('');
+                                                        }
+                                                    }
+                                                });
+                                            });
+                                        });
+                                    </script>
+                                    @error('Business_Name')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -43,29 +91,79 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Enter Product Name</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="Product_Name"
-                                        placeholder=""/>
+                                    <input type="text" id="productInput" name="Product_Name"/>
+
+                                    <div id="productStatus"></div>
+
+                                    <script>
+                                        $(document).ready(function () {
+                                            $('#productInput').on('input', function () {
+                                                var product = $(this).val();
+
+                                                $.ajax({
+                                                    url: "{{ route('check-product') }}",
+                                                    method: "POST",
+                                                    data: {"_token": "{{ csrf_token() }}", "Product_Name": product},
+                                                    success: function (response) {
+                                                        if (product === '') {
+                                                            $('#productStatus').text('');
+                                                        } else if (response.exists) {
+                                                            $('#productStatus').text('Product name already exists!');
+                                                        } else {
+                                                            $('#productStatus').text('Product name is ok');
+                                                        }
+                                                    }
+                                                });
+                                            });
+                                        });
+                                    </script>
                                     @error('Product_Name')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
+
+                            {{--For product Label--}}
+                            <!DOCTYPE html>
+                            <html lang="en">
+                            <head>
+                                <meta charset="UTF-8">
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                <title>Image Upload with Preview</title>
+                            </head>
+                            <body>
+
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Attach Lab Report</label>
                                 <div class="col-sm-8">
                                     <input
                                         type="file"
-                                        id="basic-default-message"
+                                        id="labReportInput"
                                         class="form-control"
-                                        name="Affidavit"
+                                        name="Lab_Analysis_Report"
                                         aria-describedby="basic-icon-default-message2"
                                     />
-                                    @error('Affidavit')
+                                    @error('Lab_Analysis_Report')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
+                                    <div id="labReportPreview" class="mt-2"></div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Attach Product Image</label>
+                                <div class="col-sm-8">
+                                    <input
+                                        type="file"
+                                        id="productImageInput"
+                                        class="form-control"
+                                        name="Product_Image"
+                                        accept="image/*"
+                                    />
+                                    @error('Product_Image')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    <div id="productImagePreview" class="mt-2"></div>
                                 </div>
                             </div>
 
@@ -74,20 +172,107 @@
                                 <div class="col-sm-8">
                                     <input
                                         type="file"
-                                        id="basic-default-message"
+                                        id="affidavtImageInput"
                                         class="form-control"
-                                        name="Medical_Certificate"
+                                        name="Affidavit"
                                         aria-describedby="basic-icon-default-message2"
                                     />
-                                    @error('Medical_Certificate')
+                                    @error('Affidavit')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
+                                    <div id="affidavitImagePreview" class="mt-2"></div>
                                 </div>
                             </div>
+
+                            <script>
+                                document.getElementById('productImageInput').addEventListener('change', function () {
+                                    var fileInput = this;
+                                    var previewContainer = document.getElementById('productImagePreview');
+
+                                    while (previewContainer.firstChild) {
+                                        previewContainer.removeChild(previewContainer.firstChild);
+                                    }
+
+                                    var files = fileInput.files;
+                                    for (var i = 0; i < files.length; i++) {
+                                        var reader = new FileReader();
+
+                                        reader.onload = function (e) {
+                                            var imageElement = document.createElement('img');
+                                            imageElement.className = 'custom-thumbnail';
+                                            imageElement.src = e.target.result;
+
+                                            previewContainer.appendChild(imageElement);
+                                        };
+
+                                        reader.readAsDataURL(files[i]);
+                                    }
+                                });
+
+                                document.getElementById('labReportInput').addEventListener('change', function () {
+                                    var fileInput = this;
+                                    var previewContainer = document.getElementById('labReportPreview');
+
+                                    while (previewContainer.firstChild) {
+                                        previewContainer.removeChild(previewContainer.firstChild);
+                                    }
+
+                                    var files = fileInput.files;
+                                    for (var i = 0; i < files.length; i++) {
+                                        var reader = new FileReader();
+
+                                        reader.onload = function (e) {
+                                            var imageElement = document.createElement('img');
+                                            imageElement.className = 'custom-thumbnail';
+                                            imageElement.src = e.target.result;
+
+                                            previewContainer.appendChild(imageElement);
+                                        };
+
+                                        reader.readAsDataURL(files[i]);
+                                    }
+                                });
+
+                                document.getElementById('affidavtImageInput').addEventListener('change', function () {
+                                    var fileInput = this;
+                                    var previewContainer = document.getElementById('affidavitImagePreview');
+
+                                    while (previewContainer.firstChild) {
+                                        previewContainer.removeChild(previewContainer.firstChild);
+                                    }
+
+                                    var files = fileInput.files;
+                                    for (var i = 0; i < files.length; i++) {
+                                        var reader = new FileReader();
+
+                                        reader.onload = function (e) {
+                                            var imageElement = document.createElement('img');
+                                            imageElement.className = 'custom-thumbnail';
+                                            imageElement.src = e.target.result;
+
+                                            previewContainer.appendChild(imageElement);
+                                        };
+
+                                        reader.readAsDataURL(files[i]);
+                                    }
+                                });
+                            </script>
+                            <style>
+                                .custom-thumbnail {
+                                    width: 150px; /* Set your desired width */
+                                    height: auto; /* Maintain aspect ratio */
+                                    margin-right: 10px; /* Optional: Add margin for spacing */
+                                }
+                            </style>
+
+                            </body>
+                            </html>
+
+
                         </div>
                     </div>
                 </div>
-                <!-- License Category -->
+                <!-- Product Category -->
                 <div class="col-xxl-10">
                     <div class="card mb-4">
                         <div class="card-header d-flex align-items-center justify-content-between">

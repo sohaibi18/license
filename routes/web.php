@@ -73,6 +73,10 @@ Route::group([
     'middleware' => 'auth',
 ], function () {
     Route::get('/show/product/application/form/{userid}', 'show')->name('show-product-application-form');
+    Route::post('/check-cnic', 'check_cnic')->name('check-cnic');
+    Route::post('/check-business','check_business')->name('check-business');
+    Route::post('/check-product','check_product')->name('check-product');
+    Route::post('/store/product/data/{id}', 'store')->name('store-product-data');
 });
 
 require __DIR__ . '/auth.php';
