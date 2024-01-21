@@ -24,39 +24,38 @@
 
                 @foreach($payments as $payment)
                     {{-- Skip the entire row if license_applications is null --}}
-                    @if ($payment->license_applications)
+                    @if ($payment->product_applications)
                         <tr>
                             <td>{{ $serialNumber++ }}</td>
                             <td>
-                                @if($payment->license_applications->ProcLvl == 'Submitted')
-                                    <span class="text-success">{{ $payment->license_applications->ProcLvl }}</span><br>
+                                @if($payment->product_applications->ProcLvl == 'Submitted')
+                                    <span class="text-success">{{ $payment->product_applications->ProcLvl }}</span><br>
                                 @endif
-                                License Application No: {{ $payment->license_application_id }}<br>
-
+                                Product Application No: {{ $payment->product_application_id }}<br>
+                                Product Name: {{ $payment->product_applications->Product_Name }}<br>
                                 {{-- Display Business details --}}
-                                @if ($payment->license_applications->business)
-                                    Business Name: {{ $payment->license_applications->business->Business_Name }}<br>
-                                    Business Address: {{ $payment->license_applications->business->Business_Address }}
+                                @if ($payment->product_applications->business)
+                                    Business Name: {{ $payment->product_applications->business->Business_Name }}<br>
+                                    Business Address: {{ $payment->product_applications->business->Business_Address }}
                                     <br>
-                                    Contact Number: {{ $payment->license_applications->business->Contact_Number }}<br>
-                                    District: {{ $payment->license_applications->business->district->District_Name }}
-                                    <br>
+                                    Contact Number: {{ $payment->product_applications->business->Contact_Number }}<br>
+
                                     {{-- Add other details as needed --}}
                                 @endif
 
                                 {{-- Other details --}}
                             </td>
                             <td>
-                                @if($payment->license_applications->business->owner)
-                                    Owner Name: {{ $payment->license_applications->business->owner->Applicant_Name }}
+                                @if($payment->product_applications->business->owner)
+                                    Owner Name: {{ $payment->product_applications->business->owner->Applicant_Name }}
                                     <br>
                                     Owner Father
-                                    Name: {{ $payment->license_applications->business->owner->Applicant_Father_Name }}
+                                    Name: {{ $payment->product_applications->business->owner->Applicant_Father_Name }}
                                     <br>
                                 @endif
                             </td>
                             <td>
-                                <a href="/show/verification/form/{{ $userid }}/license/{{ $payment->license_application_id }}">
+                                <a href="/show/verification/form/{{ $userid }}/product/{{ $payment->product_application_id }}">
                                     <button type="button" class="btn rounded-pill btn-primary">Verify</button>
                                 </a>
                             </td>

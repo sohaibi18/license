@@ -15,6 +15,7 @@ class Payment extends Model
     protected $table = 'payments';
     protected $fillable = [
         'license_application_id',
+        'product_application_id',
         'Due_Amount',
         'Paid_Amount',
         'Due_Date',
@@ -44,4 +45,6 @@ class Payment extends Model
     {
         return $this->belongsTo(ProductApplication::class, 'product_application_id');
     }
+
+
 }

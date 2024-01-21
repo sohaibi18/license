@@ -1,6 +1,6 @@
 <x-layouts.app>
     <div class="container-xxl flex-grow-1 container-p-y">
-        <form method="POST" action="/license/verified/{{$license->id}}/{{$userid}}" enctype="multipart/form-data">
+        <form method="POST" action="/product/verified/{{$product->id}}/{{$userid}}" enctype="multipart/form-data">
             @csrf
 
             <!-- Basic Layout -->
@@ -25,20 +25,20 @@
 
                                 </thead>
                                 <tbody>
-                                @if($license)
+                                @if($product)
                                     <tr>
                                         <td>
                                           <span
                                               style="font-family: 'Your_Custom_Font',serif; font-size: 16px; font-weight: bold;">
-                                              Applicant Name: {{ $license->business->owner->Applicant_Name }}<br>
-                                              Father Name: {{ $license->business->owner->Applicant_Father_Name}}<br>
-                                             CNIC: {{ $license->business->owner->CNIC }}<br>
-                                            Personal Address: {{ $license->business->owner->Personal_Address }}<br>
+                                              Applicant Name: {{ $product->business->owner->Applicant_Name }}<br>
+                                              Father Name: {{ $product->business->owner->Applicant_Father_Name}}<br>
+                                             CNIC: {{ $product->business->owner->CNIC }}<br>
+                                            Personal Address: {{ $product->business->owner->Personal_Address }}<br>
                                             Profile Image:  <img
-                                                  src="{{ asset('storage/' . urlencode($license->business->owner->Profile_Image)) }}"
+                                                  src="{{ asset('storage/' . urlencode($product->business->owner->Profile_Image)) }}"
                                                   alt="Profile Image" style="max-width: 5%;"><br>
                                               CNIC Image:   <img
-                                                  src="{{ asset('storage/' . urlencode($license->business->owner->CNIC_Image)) }}"
+                                                  src="{{ asset('storage/' . urlencode($product->business->owner->CNIC_Image)) }}"
                                                   alt="CNIC Image" style="max-width: 5%;"><br>
 
                                           </span>
@@ -47,11 +47,12 @@
                                         <td>
                                              <span
                                                  style="font-family: 'Your_Custom_Font',serif; font-size: 16px; font-weight: bold;">
-                                            Business Name : {{ $license->business->Business_Name }}<br>
-                                            Business Type: {{ $license->business->business_type->Business_Types}}<br>
-                                            Business Address: {{ $license->business->Business_Address }}<br>
-                                            Contact Number: {{ $license->business->Contact_Number }}<br>
-                                            District: {{ $license->business->district->District_Name}}<br>
+                                            Product Name: {{ $product->Product_Name }}<br>
+                                                 Business Name : {{ $product->business->Business_Name }}<br>
+                                            Business Type: {{ $product->business->business_type->Business_Types}}<br>
+                                            Business Address: {{ $product->business->Business_Address }}<br>
+                                            Contact Number: {{ $product->business->Contact_Number }}<br>
+                                            District: {{ $product->business->district->District_Name}}<br>
                                              </span>
                                         </td>
                                     </tr>
@@ -69,14 +70,14 @@
                                         <td>
                                              <span
                                                  style="font-family: 'Your_Custom_Font',serif; font-size: 16px; font-weight: bold;">
-                                            License Category : {{ $license->license_category_id }}<br>
-                                            Due Amount: {{ $license->payments->Due_Amount}}<br>
-                                            Paid Amount: {{ $license->payments->Paid_Amount }}<br>
-                                            Due Date: {{ $license->payments->Due_Date }}<br>
-                                            Deposit Date: {{ $license->payments->Deposit_Date }}<br>
-                                            Challan No: {{$license->payments->Challan_No}}<br>
+                                            License Category : {{ $product->license_category_id }}<br>
+                                            Due Amount: {{ $product->payments->Due_Amount}}<br>
+                                            Paid Amount: {{ $product->payments->Paid_Amount }}<br>
+                                            Due Date: {{ $product->payments->Due_Date }}<br>
+                                            Deposit Date: {{ $product->payments->Deposit_Date }}<br>
+                                            Challan No: {{$product->payments->Challan_No}}<br>
                                             Challan Image:  <img
-                                                     src="{{ asset('storage/' . urlencode($license->payments->Challan_Image)) }}"
+                                                     src="{{ asset('storage/' . urlencode($product->payments->Challan_Image)) }}"
                                                      alt="CNIC Image" style="max-width: 5%;"><br>
 
                                              </span>
@@ -85,8 +86,8 @@
                                         <td>
                                              <span
                                                  style="font-family: 'Your_Custom_Font',serif; font-size: 16px; font-weight: bold;">
-                                            Inspected By : {{ $license->payments->Verify_By }}<br>
-                                            Inspection Date: {{ $license->Submit_Date}}<br>
+                                            Inspected By : {{ $product->payments->Verify_By }}<br>
+                                            Inspection Date: {{ $product->Submit_Date}}<br>
                                              </span>
                                         </td>
                                     </tr>

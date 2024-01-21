@@ -51,4 +51,9 @@ class ProductApplication extends Model
     {
         return $this->belongsTo(Payment::class);
     }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class, 'product_application_id');
+    }
 }

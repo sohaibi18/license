@@ -16,22 +16,22 @@
                 @php
                     $serialNumber = 1;
                 @endphp
-                @foreach($licenseapplications as $licenseapplication)
+                @foreach($productapplications as $productapplication)
                     <tr>
                         <td>{{ $serialNumber++ }}</td>
                         <td>
-                            @if($licenseapplication->ProcLvl == 'Pending')
-                                <span class="text-success">{{ $licenseapplication->ProcLvl }}</span><br>
+                            @if($productapplication->ProcLvl == 'Pending')
+                                <span class="text-success">{{ $productapplication->ProcLvl }}</span><br>
                             @endif
-                            License Application No: {{ $licenseapplication->id }} <br>
-                            Applicant Name: {{ $licenseapplication->business->owner->Applicant_Name }} <br>
-                            Business Name: {{ $licenseapplication->business->Business_Name }} <br>
-                            Business Address: {{ $licenseapplication->business->Business_Address }} <br>
-                            License Category: {{ $licenseapplication->licenseCategory->License_Category_Name }} <br>
+                            Product Application No: {{ $productapplication->id }} <br>
+                            Product Name: {{ $productapplication->Product_Name }} <br>
+                            Business Name: {{ $productapplication->business->Business_Name }} <br>
+                            Business Address: {{ $productapplication->business->Business_Address }} <br>
+                            Product Category: {{ $productapplication->license_category->License_Category_Name }} <br>
 
                         </td>
                         <td>
-                            <a href="/attach/licensee/documents/{{$licenseapplication->id}}">
+                            <a href="/attach/product/documents/{{$productapplication->id}}">
                                 <button type="button" class="btn rounded-pill btn-primary">Attach Documents</button>
                             </a>
                         </td>

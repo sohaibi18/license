@@ -118,12 +118,20 @@
                                 </div>
                             </div>
 
+                            <!DOCTYPE html>
+                            <html lang="en">
+                            <head>
+                                <meta charset="UTF-8">
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                <title>Image Upload with Preview</title>
+                            </head>
+                            <body>
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Profile Image</label>
                                 <div class="col-sm-8">
                                     <input
                                         type="file"
-                                        id="basic-default-message"
+                                        id="profileImageInput"
                                         class="form-control"
                                         name="Profile_Image"
                                         aria-describedby="basic-icon-default-message2"
@@ -131,6 +139,7 @@
                                     @error('Profile_Image')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
+                                    <div id="profileImagePreview" class="mt-2"></div>
                                 </div>
                             </div>
 
@@ -139,7 +148,7 @@
                                 <div class="col-sm-8">
                                     <input
                                         type="file"
-                                        id="basic-default-message"
+                                        id="cnicImageInput"
                                         class="form-control"
                                         name="CNIC_Image"
                                         aria-describedby="basic-icon-default-message2"
@@ -147,8 +156,69 @@
                                     @error('CNIC_Image')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
+                                    <div id="cnicImagePreview" class="mt-2"></div>
                                 </div>
                             </div>
+                            <script>
+                                document.getElementById('profileImageInput').addEventListener('change', function () {
+                                    var fileInput = this;
+                                    var previewContainer = document.getElementById('profileImagePreview');
+
+                                    while (previewContainer.firstChild) {
+                                        previewContainer.removeChild(previewContainer.firstChild);
+                                    }
+
+                                    var files = fileInput.files;
+                                    for (var i = 0; i < files.length; i++) {
+                                        var reader = new FileReader();
+
+                                        reader.onload = function (e) {
+                                            var imageElement = document.createElement('img');
+                                            imageElement.className = 'custom-thumbnail';
+                                            imageElement.src = e.target.result;
+
+                                            previewContainer.appendChild(imageElement);
+                                        };
+
+                                        reader.readAsDataURL(files[i]);
+                                    }
+                                });
+                            </script>
+                            <script>
+                                document.getElementById('cnicImageInput').addEventListener('change', function () {
+                                    var fileInput = this;
+                                    var previewContainer = document.getElementById('cnicImagePreview');
+
+                                    while (previewContainer.firstChild) {
+                                        previewContainer.removeChild(previewContainer.firstChild);
+                                    }
+
+                                    var files = fileInput.files;
+                                    for (var i = 0; i < files.length; i++) {
+                                        var reader = new FileReader();
+
+                                        reader.onload = function (e) {
+                                            var imageElement = document.createElement('img');
+                                            imageElement.className = 'custom-thumbnail';
+                                            imageElement.src = e.target.result;
+
+                                            previewContainer.appendChild(imageElement);
+                                        };
+
+                                        reader.readAsDataURL(files[i]);
+                                    }
+                                });
+                            </script>
+                            <style>
+                                .custom-thumbnail {
+                                    width: 150px; /* Set your desired width */
+                                    height: auto; /* Maintain aspect ratio */
+                                    margin-right: 10px; /* Optional: Add margin for spacing */
+                                }
+                            </style>
+
+                            </body>
+                            </html>
 
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Add District</label>
@@ -233,12 +303,20 @@
                                 </div>
                             </div>
 
+                            <!DOCTYPE html>
+                            <html lang="en">
+                            <head>
+                                <meta charset="UTF-8">
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                <title>Image Upload with Preview</title>
+                            </head>
+                            <body>
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Attach Affidavit</label>
                                 <div class="col-sm-8">
                                     <input
                                         type="file"
-                                        id="basic-default-message"
+                                        id="affidavitImageInput"
                                         class="form-control"
                                         name="Affidavit"
                                         aria-describedby="basic-icon-default-message2"
@@ -246,6 +324,7 @@
                                     @error('Affidavit')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
+                                    <div id="affidavitImagePreview" class="mt-2"></div>
                                 </div>
                             </div>
 
@@ -254,7 +333,7 @@
                                 <div class="col-sm-8">
                                     <input
                                         type="file"
-                                        id="basic-default-message"
+                                        id="medicalcertificateImageInput"
                                         class="form-control"
                                         name="Medical_Certificate"
                                         aria-describedby="basic-icon-default-message2"
@@ -262,8 +341,70 @@
                                     @error('Medical_Certificate')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
+                                    <div id="medicalcertificateImagePreview" class="mt-2"></div>
                                 </div>
                             </div>
+                            <script>
+                                document.getElementById('affidavitImageInput').addEventListener('change', function () {
+                                    var fileInput = this;
+                                    var previewContainer = document.getElementById('affidavitImagePreview');
+
+                                    while (previewContainer.firstChild) {
+                                        previewContainer.removeChild(previewContainer.firstChild);
+                                    }
+
+                                    var files = fileInput.files;
+                                    for (var i = 0; i < files.length; i++) {
+                                        var reader = new FileReader();
+
+                                        reader.onload = function (e) {
+                                            var imageElement = document.createElement('img');
+                                            imageElement.className = 'custom-thumbnail';
+                                            imageElement.src = e.target.result;
+
+                                            previewContainer.appendChild(imageElement);
+                                        };
+
+                                        reader.readAsDataURL(files[i]);
+                                    }
+                                });
+                            </script>
+                            <script>
+                                document.getElementById('medicalcertificateImageInput').addEventListener('change', function () {
+                                    var fileInput = this;
+                                    var previewContainer = document.getElementById('medicalcertificateImagePreview');
+
+                                    while (previewContainer.firstChild) {
+                                        previewContainer.removeChild(previewContainer.firstChild);
+                                    }
+
+                                    var files = fileInput.files;
+                                    for (var i = 0; i < files.length; i++) {
+                                        var reader = new FileReader();
+
+                                        reader.onload = function (e) {
+                                            var imageElement = document.createElement('img');
+                                            imageElement.className = 'custom-thumbnail';
+                                            imageElement.src = e.target.result;
+
+                                            previewContainer.appendChild(imageElement);
+                                        };
+
+                                        reader.readAsDataURL(files[i]);
+                                    }
+                                });
+                            </script>
+                            <style>
+                                .custom-thumbnail {
+                                    width: 150px; /* Set your desired width */
+                                    height: auto; /* Maintain aspect ratio */
+                                    margin-right: 10px; /* Optional: Add margin for spacing */
+                                }
+                            </style>
+
+                            </body>
+                            </html>
+
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Website</label>
                                 <div class="col-sm-8">

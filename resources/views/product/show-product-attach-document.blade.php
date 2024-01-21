@@ -1,6 +1,6 @@
 <x-layouts.app>
     <div class="container-xxl flex-grow-1 container-p-y">
-        <form method="POST" action="/licensee/payment/details/{{$id}}" enctype="multipart/form-data">
+        <form method="POST" action="/product/payment/details/{{$id}}" enctype="multipart/form-data">
             @csrf
             <!-- Basic Layout -->
             <div class="row">

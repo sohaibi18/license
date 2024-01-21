@@ -39,7 +39,7 @@
                     <li class="menu-item">
 
                         <a href="/show/submitted/applications" class="menu-link">
-                            <div data-i18n="Perfect Scrollbar">Submitted Applications</div>
+                            <div data-i18n="Perfect Scrollbar">License Submitted Applications</div>
                         </a>
                     </li>
                 @endif
@@ -52,7 +52,7 @@
 
                         <!-- Pass the authenticated user's ID in the URL -->
                         <a href="/application/finance/verification/{{ auth()->id() }}" class="menu-link">
-                            <div data-i18n="Without menu">Finance Pending Applications</div>
+                            <div data-i18n="Without menu">License Finance Pending Applications</div>
                         </a>
                     </li>
                 @endif
@@ -68,7 +68,7 @@
                         <!-- Pass the authenticated user's ID in the URL -->
 
                         <a href="/application/license/verification/{{ auth()->id() }}" class="menu-link">
-                            <div data-i18n="Without menu">License Pending Applications</div>
+                            <div data-i18n="Without menu">License Approval Pending Applications</div>
                         </a>
                     </li>
                 @endif
@@ -84,7 +84,7 @@
 
                         <!-- Pass the authenticated user's ID in the URL -->
                         <a href="/show/applications/{{ auth()->id() }}" class="menu-link">
-                            <div data-i18n="Without menu">Pending Applications</div>
+                            <div data-i18n="Without menu">License NotIssued Pending Applications</div>
                         </a>
                     </li>
                 @endif
@@ -128,6 +128,74 @@
                         <!-- Pass the authenticated user's ID in the URL -->
                         <a href="/show/product/application/form/{{ auth()->id() }}" class="menu-link">
                             <div data-i18n="Without menu">Add Product Application</div>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+
+            <ul class="menu-sub">
+                @if($loggedInUserId == 5 or $loggedInUserId == 1)
+                    <li class="menu-item">
+
+                        <!-- Pass the authenticated user's ID in the URL -->
+                        <a href="/show/product/submitted/applications" class="menu-link">
+                            <div data-i18n="Without menu">Product Submitted Applications</div>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+
+            <ul class="menu-sub">
+                @if($loggedInUserId == 3 or $loggedInUserId == 1)
+                    <li class="menu-item">
+
+                        <!-- Pass the authenticated user's ID in the URL -->
+                        <a href="/product/application/finance/verification/{{ auth()->id() }}" class="menu-link">
+                            <div data-i18n="Without menu">Product Finance Pending Applications</div>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+
+            <ul class="menu-sub">
+                @if($loggedInUserId == 6 or $loggedInUserId == 1)
+                    <li class="menu-item">
+                        <!-- Pass the authenticated user's ID in the URL -->
+
+                        <a href="/application/product/verification/{{ auth()->id() }}" class="menu-link">
+                            <div data-i18n="Without menu">Product Approval Pending Applications</div>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+            <!-- Display user information -->
+            {{--            <p>Hello, {{ auth()->user()->name }}!</p>--}}
+
+
+
+            <ul class="menu-sub">
+                @if($loggedInUserId == 4 or $loggedInUserId == 1)
+                    <li class="menu-item">
+
+                        <!-- Pass the authenticated user's ID in the URL -->
+                        <a href="/{{ auth()->id() }}" class="menu-link">
+                            <div data-i18n="Without menu">Product NotIssued Pending Applications</div>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+            <!-- Display user information -->
+            {{--            <p>Hello, {{ auth()->user()->name }}!</p>--}}
+
+
+
+            <ul class="menu-sub">
+                @if($loggedInUserId == 4 or $loggedInUserId == 1)
+                    <li class="menu-item">
+
+                        <!-- Pass the authenticated user's ID in the URL -->
+                        <a href="/{{ auth()->id() }}" class="menu-link">
+                            <div data-i18n="Without menu">Print Ready Applications</div>
                         </a>
                     </li>
                 @endif

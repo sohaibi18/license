@@ -79,8 +79,12 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Challan Image</label>
                                 <div class="col-sm-8">
-                                    <img src="{{ asset('storage/app/public' . $Challan_Image) }}" alt="Challan Image"
-                                         style="max-width: 100%;">
+
+
+{{--                                    <img src="{{ asset('' . $Challan_Image) }}" alt="Challan Image"--}}
+{{--                                         style="max-width: 100%;">--}}
+                                    <img src="{{ asset('storage/' . urlencode($Challan_Image)) }}" alt="Challan Image" style="max-width: 20%;">
+
                                     @if($errors->has('Challan_Image'))
                                         <span class="alert alert-danger"> {{ $errors->first('Challan_Image') }}</span>
                                         <br>
