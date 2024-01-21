@@ -6,6 +6,11 @@
                 {{ session('success') }}
             </div>
         @endif
+            @if(session('success_message'))
+                <div class="alert alert-success">
+                    {{ session('success_message') }}
+                </div>
+            @endif
 
         <div class="row">
             <div class="col-lg-8 mb-4 order-0">

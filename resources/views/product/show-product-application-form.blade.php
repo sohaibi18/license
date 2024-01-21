@@ -157,10 +157,10 @@
                                         type="file"
                                         id="productImageInput"
                                         class="form-control"
-                                        name="Product_Image"
+                                        name="Product_Label"
                                         accept="image/*"
                                     />
-                                    @error('Product_Image')
+                                    @error('Product_Label')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                     <div id="productImagePreview" class="mt-2"></div>

@@ -61,7 +61,7 @@ class ProductApplicationController extends Controller
     {
 
         $labreport = $request->file('Lab_Analysis_Report')->store('', 'public');
-        $productlabel = $request->file('Product_Image')->store('', 'public');
+        $productlabel = $request->file('Product_Label')->store('', 'public');
 
         $affidavitpath = null;
         if ($request->hasFile('Affidavit')) {
@@ -80,7 +80,7 @@ class ProductApplicationController extends Controller
             $businessId = $business->id;
         }
 
-        $procLvl = $request->input('ProcLvl', 'Submitted');
+        $procLvl = $request->input('ProcLvl', 'Pending');
 
         $product = ProductApplication::create([
             'business_id' => $businessId,
@@ -94,7 +94,7 @@ class ProductApplicationController extends Controller
             'Expire_Date' => null,
             'Product_Registration_No' => null,  // Set 'Product Registration No' to null initially
             'QRImage' => null,  // Set 'QRImage' to null initially
-            'user_id' => $id->id,
+            'user_id' => $id,
             'Update_Date' => Carbon::now(),
             'Submit_Date' => Carbon::now(),
             'Finance_Verified_Date' => null,
@@ -129,7 +129,7 @@ class ProductApplicationController extends Controller
             'Bank_Name' => null,
             'Branch_Code' => null,
         ]);
-        return redirect('/dashboard')->with('success', 'License/product Application created successfully. ID: ' . $product->id);
+        return redirect('/dashboard')->with('success_message', 'Product Application created successfully. ID: ' . $product->id);
 
     }
 }

@@ -40,4 +40,8 @@ class Payment extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function product_applications(): BelongsTo
+    {
+        return $this->belongsTo(ProductApplication::class, 'product_application_id');
+    }
 }

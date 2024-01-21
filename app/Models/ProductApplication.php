@@ -16,6 +16,7 @@ class ProductApplication extends Model
         'business_id',
         'owner_id',
         'Product_Name',
+        'Product_Label',
         'Lab_Analysis_Report',
         'ProcLvl',
         'Affidavit',
@@ -24,7 +25,7 @@ class ProductApplication extends Model
         'QRImage',
         'user_id',
         'Update_Date', 'Submit_Date', 'Issue_Date', 'Finance_Verified_Date', 'Registration_Approved_Date',
-        'Printed_Date', 'Dispatched_Date',
+        'Printed_Date', 'Dispatched_Date', 'license_category_id'
     ];
 
     public function business():BelongsTo
@@ -42,5 +43,12 @@ class ProductApplication extends Model
         return $this->hasOne(Owner::class);
     }
 
-
+    public function license_category()
+    {
+        return $this->belongsTo(LicenseCategory::class);
+    }
+    public function payment(): BelongsTo
+    {
+        return $this->belongsTo(Payment::class);
+    }
 }
