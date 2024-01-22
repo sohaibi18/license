@@ -43,7 +43,7 @@ class ProductApplication extends Model
         return $this->hasOne(Owner::class);
     }
 
-    public function license_category()
+    public function license_category(): BelongsTo
     {
         return $this->belongsTo(LicenseCategory::class);
     }
@@ -54,6 +54,6 @@ class ProductApplication extends Model
 
     public function payments()
     {
-        return $this->hasMany(Payment::class, 'product_application_id');
+        return $this->hasOne(Payment::class, 'product_application_id');
     }
 }

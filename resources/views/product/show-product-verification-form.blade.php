@@ -6,106 +6,152 @@
             <!-- Basic Layout -->
             <div class="row">
                 <!-- Personal Information -->
-                <div class="col-xxl-10">
-                    <!-- Table Section -->
+                <div class="col-xxl-12">
+                    <!-- Licensee Details Card -->
                     <div class="card mb-4">
                         <div class="card-header">
-                            <h5 class="mb-0">Licensee Details</h5>
+                            <h5 class="mb-0">Product Application Details</h5>
                         </div>
                         <div class="card-body">
 
-                            <table class="table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th style="font-weight: bold; font-size: 18px;">Owner Personal Details<br>
-                                    </th>
-                                    <th style="font-weight: bold; font-size: 18px;">Business Details</th>
-                                    <!-- Add more columns as needed -->
-                                </tr>
+                            <div class="row">
+                                <!-- Owner Personal Details -->
 
-                                </thead>
-                                <tbody>
-                                @if($product)
-                                    <tr>
-                                        <td>
-                                          <span
-                                              style="font-family: 'Your_Custom_Font',serif; font-size: 16px; font-weight: bold;">
-                                              Applicant Name: {{ $product->business->owner->Applicant_Name }}<br>
-                                              Father Name: {{ $product->business->owner->Applicant_Father_Name}}<br>
-                                             CNIC: {{ $product->business->owner->CNIC }}<br>
-                                            Personal Address: {{ $product->business->owner->Personal_Address }}<br>
-                                            Profile Image:  <img
-                                                  src="{{ asset('storage/' . urlencode($product->business->owner->Profile_Image)) }}"
-                                                  alt="Profile Image" style="max-width: 5%;"><br>
-                                              CNIC Image:   <img
-                                                  src="{{ asset('storage/' . urlencode($product->business->owner->CNIC_Image)) }}"
-                                                  alt="CNIC Image" style="max-width: 5%;"><br>
 
-                                          </span>
-                                        </td>
+                                <div class="col-md-6 border p-3">
+                                    <ul class="list-unstyled mb-4" style="font-size: 16px;">
+                                        <strong>Applicant Name:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span
+                                            class="border border-primary p-1 font-weight-bold">{{ $product->business->owner->Applicant_Name }}</span><br><br>
+                                        <strong>Applicant Father Name:</strong> <span
+                                            class="border border-primary p-1 font-weight-bold">{{ $product->business->owner->Applicant_Father_Name}}</span><br><br>
+                                        <strong>Applicant CNIC:</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                            class="border border-primary p-1 font-weight-bold">{{ $product->business->owner->CNIC }}</span><br><br>
+                                        <strong>Applicant Address:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                            class="border border-primary p-1 font-weight-bold">{{ $product->business->owner->Personal_Address }}</span><br><br>
 
-                                        <td>
-                                             <span
-                                                 style="font-family: 'Your_Custom_Font',serif; font-size: 16px; font-weight: bold;">
-                                            Product Name: {{ $product->Product_Name }}<br>
-                                                 Business Name : {{ $product->business->Business_Name }}<br>
-                                            Business Type: {{ $product->business->business_type->Business_Types}}<br>
-                                            Business Address: {{ $product->business->Business_Address }}<br>
-                                            Contact Number: {{ $product->business->Contact_Number }}<br>
-                                            District: {{ $product->business->district->District_Name}}<br>
-                                             </span>
-                                        </td>
-                                    </tr>
-                                    <th style="padding: 40px; border: none;"></th>
-                                    <th style="padding: 40px; border: none;"></th>
-                                    <tr>
+                                    </ul>
+                                </div>
 
-                                    </tr>
-                                    <tr>
-                                        <th style="font-weight: bold; font-size: 18px;">License Category Details</th>
-                                        <th style="font-weight: bold; font-size: 18px;">Inspection Detials</th>
-                                    </tr>
 
-                                    <tr>
-                                        <td>
-                                             <span
-                                                 style="font-family: 'Your_Custom_Font',serif; font-size: 16px; font-weight: bold;">
-                                            License Category : {{ $product->license_category_id }}<br>
-                                            Due Amount: {{ $product->payments->Due_Amount}}<br>
-                                            Paid Amount: {{ $product->payments->Paid_Amount }}<br>
-                                            Due Date: {{ $product->payments->Due_Date }}<br>
-                                            Deposit Date: {{ $product->payments->Deposit_Date }}<br>
-                                            Challan No: {{$product->payments->Challan_No}}<br>
-                                            Challan Image:  <img
-                                                     src="{{ asset('storage/' . urlencode($product->payments->Challan_Image)) }}"
-                                                     alt="CNIC Image" style="max-width: 5%;"><br>
+                                <!-- Business Details -->
+                                <div class="col-md-6 border p-3">
+                                    <ul class="list-unstyled mb-4" style="font-size: 16px;">
+                                        <strong class="label-with-space">Product Name:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span
+                                            class="border border-primary p-1 font-weight-bold">{{ $product->Product_Name }}</span><br><br>
 
-                                             </span>
-                                        </td>
+                                        <strong class="label-with-space">Business Name:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span
+                                            class="border border-primary p-1 font-weight-bold">{{ $product->business->Business_Name }}</span><br><br>
 
-                                        <td>
-                                             <span
-                                                 style="font-family: 'Your_Custom_Font',serif; font-size: 16px; font-weight: bold;">
-                                            Inspected By : {{ $product->payments->Verify_By }}<br>
-                                            Inspection Date: {{ $product->Submit_Date}}<br>
-                                             </span>
-                                        </td>
-                                    </tr>
-                                @endif
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                                        <strong class="label-with-space">Business Type:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span
+                                            class="border border-primary p-1 font-weight-bold">{{ $product->business->business_type->Business_Types}}</span><br><br>
 
-                    <div class="row justify-content-end">
-                        <div class="row justify-content-start">
-                            <div class="col-sm-10">
-                                <button type="submit" class="btn btn-primary">License Approved</button>
+                                        <strong class="label-with-space">Business Address:</strong>
+                                        <span
+                                            class="border border-primary p-1 font-weight-bold">{{ $product->business->Business_Address }}</span><br><br>
+
+                                        <strong class="label-with-space">Contact Number:</strong>&nbsp;&nbsp;
+                                        <span
+                                            class="border border-primary p-1 font-weight-bold">{{ $product->business->Contact_Number }}</span><br><br>
+
+                                        <strong class="label-with-space">District:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span
+                                            class="border border-primary p-1 font-weight-bold">{{ $product->business->district->District_Name}}</span><br><br>
+                                    </ul>
+                                </div>
+
+                            </div>
+
+                            <!-- License Category and Inspection Details -->
+                            <div class="row mt-4">
+                                <div class="col-md-6 border p-3">
+                                    <ul class="list-unstyled mb-4" style="font-size: 16px;">
+                                        <strong class="label-with-space">License Category:</strong>
+                                        <span
+                                            class="border border-primary p-1 font-weight-bold">{{ $product->license_category->License_Category_Name }}</span><br><br>
+
+                                        <strong class="label-with-space">Due Amount:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span
+                                            class="border border-primary p-1 font-weight-bold">{{ $product->payments->Due_Amount}}</span><br><br>
+
+                                        <strong class="label-with-space">Paid Amount:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span
+                                            class="border border-primary p-1 font-weight-bold">{{ $product->payments->Paid_Amount }}</span><br><br>
+
+                                        <strong class="label-with-space">Due Date:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span
+                                            class="border border-primary p-1 font-weight-bold">{{ $product->payments->Due_Date }}</span><br><br>
+
+                                        <strong class="label-with-space">Deposit Date:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span
+                                            class="border border-primary p-1 font-weight-bold">{{ $product->payments->Deposit_Date }}</span><br><br>
+
+                                        <strong class="label-with-space">Challan No:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span
+                                            class="border border-primary p-1 font-weight-bold">{{$product->payments->Challan_No}}</span><br><br>
+                                    </ul>
+                                </div>
+
+                                <div class="col-md-6 border p-3">
+                                    <ul class="list-unstyled mb-4" style="font-size: 16px;">
+                                        <strong class="label-with-space">Inspected By:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span
+                                            class="border border-primary p-1 font-weight-bold">{{ $product->payments->Verify_By }}</span><br><br>
+
+                                        <strong class="label-with-space">Inspection Date:</strong>
+                                        <span
+                                            class="border border-primary p-1 font-weight-bold">{{ $product->Submit_Date}}</span><br><br>
+                                    </ul>
+                                </div>
+
+                            </div>
+
+                            <!-- Images -->
+                            <div class="row mt-4">
+                                <div class="col-md-6 border p-3">
+                                    <p class="font-weight-bold"><strong>Profile Image:</strong></p>
+                                    <img
+                                        src="{{ asset('storage/' . urlencode($product->business->owner->Profile_Image)) }}"
+                                        alt="Profile Image" style="max-width: 50%;">
+                                </div>
+
+                                <div class="col-md-6 border p-3">
+                                    <p class="font-weight-bold"><strong>CNIC Image:</strong></p>
+                                    <img
+                                        src="{{ asset('storage/' . urlencode($product->business->owner->CNIC_Image)) }}"
+                                        alt="CNIC Image" style="max-width: 50%;">
+                                </div>
+
+                                <div class="col-md-6 border p-3">
+                                    <p class="font-weight-bold"><strong>Lab Report:</strong></p>
+                                    <img src="{{ asset('storage/' . urlencode($product->Lab_Analysis_Report)) }}"
+                                         alt="Lab Report Image" style="max-width: 50%;">
+                                </div>
+
+                                <div class="col-md-6 border p-3">
+                                    <p class="font-weight-bold"><strong>Product Label:</strong></p>
+                                    <img src="{{ asset('storage/' . urlencode($product->Product_Label)) }}"
+                                         alt="Label Image" style="max-width: 50%;">
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Approval Button -->
+                    <div class="row justify-content-start">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">Product Approved</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </form>
     </div>
 </x-layouts.app>
+
+
+

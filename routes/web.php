@@ -100,12 +100,12 @@ Route::group([
     Route::get('/application/product/verification/{userid}', 'display_For_Verification')->name('display_For_Verification');
     Route::get('/show/product/verification/form/{userid}/product/{id}', 'show_product_verification')
         ->name('show-license-verification');
-    Route::post('/license/verified/{id}/{userid}', 'license_verified')->name('license_verified');
-    Route::get('/show/applications/{userid}', 'show')->name('show');
-    Route::get('/issue/license/{userid}/{id}', 'issue_License')->name('issue-License');
-    Route::post('/issue/licensenumber/{userid}/{id}', 'issue_License_number')->name('issue_License_number');
-    Route::get('/show/print_ready_applications/{userid}', 'show_ReadyforPrint')->name('show_ReadyforPrint');
-    Route::get('/print/license/{userid}/{id}', 'print_license')->name('print_license');
+    Route::post('/product/verified/{id}/{userid}', 'product_verified')->name('product_verified');
+    Route::get('/show/product/applications/{userid}', 'show')->name('show');
+    Route::get('/issue/product/{userid}/{id}', 'issue_Product')->name('issue-Product');
+    Route::post('/issue/productnumber/{userid}/{id}', 'issue_Product_number')->name('issue_Product_number');
+    Route::get('/show/product/print_ready_applications/{userid}', 'show_ReadyforPrint')->name('show_ReadyforPrint');
+    Route::get('/print/product/{userid}/{id}', 'print_product')->name('print_product');
 });
 
 require __DIR__ . '/auth.php';

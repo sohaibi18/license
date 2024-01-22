@@ -178,7 +178,7 @@
                     <li class="menu-item">
 
                         <!-- Pass the authenticated user's ID in the URL -->
-                        <a href="/{{ auth()->id() }}" class="menu-link">
+                        <a href="/show/product/applications/{{ auth()->id() }}" class="menu-link">
                             <div data-i18n="Without menu">Product NotIssued Pending Applications</div>
                         </a>
                     </li>
@@ -194,7 +194,7 @@
                     <li class="menu-item">
 
                         <!-- Pass the authenticated user's ID in the URL -->
-                        <a href="/{{ auth()->id() }}" class="menu-link">
+                        <a href="/show/product/print_ready_applications/{{ auth()->id() }}" class="menu-link">
                             <div data-i18n="Without menu">Print Ready Applications</div>
                         </a>
                     </li>
