@@ -12,14 +12,13 @@
                             <small class="text-muted float-end">Default label</small>
                         </div>
                         <div class="card-body">
+                            <br>
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Due Amount</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="Due_Amount"
-                                        value="{{ $Due_Amount }}"
+                                    <input type="text"
+                                           class="form-control border border-primary font-weight-bold"
+                                           value="{{ $Due_Amount }}" readonly>
 
                                     @if($errors->has('Due_Amount'))
                                         <span class="alert alert-danger"> {{ $errors->first('Due_Amount') }}</span>
@@ -31,12 +30,9 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Paid Amount</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="Paid_Amount"
-                                        value="{{ $Paid_Amount }}"
-                                        placeholder=""/>
+                                    <input type="text"
+                                           class="form-control border border-primary font-weight-bold"
+                                           value="{{ $Paid_Amount }}" readonly>
                                     @if($errors->has('Paid_Amount'))
                                         <span
                                             class="alert alert-danger"> {{ $errors->first('Paid_Amount') }}</span>
@@ -47,12 +43,9 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Due Date</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="Due_Date"
-                                        value="{{ $Due_Date }}"
-                                        aria-describedby="basic-default-phone"/>
+                                    <input type="text"
+                                           class="form-control border border-primary font-weight-bold"
+                                           value="{{ $Due_Date }}" readonly>
                                     @if($errors->has('Due_Date'))
                                         <span class="alert alert-danger"> {{ $errors->first('Due_Date') }}</span><br>
                                     @endif
@@ -61,13 +54,9 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Deposit Date</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        id="basic-default-message"
-                                        class="form-control"
-                                        name="Deposit_Date"
-                                        value="{{ $Deposit_Date }}"
-                                        aria-describedby="basic-icon-default-message2"
-                                    />
+                                    <input type="text"
+                                           class="form-control border border-primary font-weight-bold"
+                                           value="{{ $Deposit_Date }}" readonly>
                                     @if($errors->has('Deposit_Date'))
                                         <span class="alert alert-danger"> {{ $errors->first('Deposit_Date') }}</span>
                                         <br>
@@ -80,10 +69,8 @@
                                 <label class="col-sm-2 col-form-label">Challan Image</label>
                                 <div class="col-sm-8">
 
-
-{{--                                    <img src="{{ asset('' . $Challan_Image) }}" alt="Challan Image"--}}
-{{--                                         style="max-width: 100%;">--}}
-                                    <img src="{{ asset('storage/' . urlencode($Challan_Image)) }}" alt="Challan Image" style="max-width: 20%;">
+                                    <img src="{{ asset('storage/' . urlencode($Challan_Image)) }}" alt="Challan Image"
+                                         style="max-width: 20%;">
 
                                     @if($errors->has('Challan_Image'))
                                         <span class="alert alert-danger"> {{ $errors->first('Challan_Image') }}</span>
@@ -96,12 +83,9 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Challan Number</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="Challan_No"
-                                        value="{{ $Challan_No }}"
-                                        placeholder=""/>
+                                    <input type="text"
+                                           class="form-control border border-primary font-weight-bold"
+                                           value="{{ $Challan_No }}" readonly>
                                     @if($errors->has('Challan_No'))
                                         <span class="alert alert-danger"> {{ $errors->first('Challan_No') }}</span>
                                         <br>
@@ -113,12 +97,9 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Transaction ID</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="Transaction_Id"
-                                        value="{{ $Transaction_Id }}"
-                                        placeholder=""/>
+                                    <input type="text"
+                                           class="form-control border border-primary font-weight-bold"
+                                           value="{{ $Transaction_Id }}" readonly>
                                     @if($errors->has('Transaction_Id'))
                                         <span class="alert alert-danger"> {{ $errors->first('Transaction_Id') }}</span>
                                         <br>
@@ -130,12 +111,9 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Bank Name</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="Bank_Name"
-                                        value="{{ $Bank_Name }}"
-                                        placeholder=""/>
+                                    <input type="text"
+                                           class="form-control border border-primary font-weight-bold"
+                                           value="{{ $Bank_Name }}" readonly>
                                     @if($errors->has('$Bank_Name'))
                                         <span class="alert alert-danger"> {{ $errors->first('$Bank_Name') }}</span>
                                         <br>

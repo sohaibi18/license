@@ -27,25 +27,18 @@ class ProductApplicationController extends Controller
         ]);
     }
 
-    public function check_cnic(Request $request)
+    public function check_license_no(Request $request)
     {
-        $cnic = $request->input('CNIC');
-        $owner = Owner::where('CNIC', $cnic)->first();
+        $license = $request->input('License_No');
+        $licenseApplication = LicenseApplication::where('License_No', $license)->first();
 
-        return response()->json(['exists' => $owner !== null]);
+        if ($licenseApplication !== null) {
+            $businessName = $licenseApplication->business->Business_Name;
+            $businessAddress = $licenseApplication->business->Business_Address;
 
-    }
-
-    public function check_business(Request $request)
-    {
-        $business_name = $request->input('Business_Name');
-        $business = Business::where('Business_Name', $business_name)->first();
-
-        if ($business) {
-            $business_address = $business->Business_Address;
-            return response()->json(['exists' => true, 'address' => $business_address]);
+            return response()->json(['exists' => true, 'businessName' => $businessName, 'businessAddress' => $businessAddress]);
         } else {
-            return response()->json(['exists' => false, 'address' => null]);
+            return response()->json(['exists' => false]);
         }
     }
 
@@ -67,18 +60,14 @@ class ProductApplicationController extends Controller
         if ($request->hasFile('Affidavit')) {
             $affidavitpath = $request->file('Affidavit')->store('', 'public');
         }
+        $licenseNo = $request->input('License_No');
+        $businesses = LicenseApplication::where('License_No', $licenseNo)->first();
+        if ($businesses) {
 
-        $ownercnic = $request->input('CNIC');
-        $owner = Owner::where('CNIC', $ownercnic)->first();
-        if ($owner) {
-            $ownerId = $owner->id;
+            $businessId = $businesses->business_id;
+            $business = $businesses->business;
         }
 
-        $businessname = $request->input('Business_Name');
-        $business = Business::where('Business_Name', $businessname)->first();
-        if ($business) {
-            $businessId = $business->id;
-        }
 
         $procLvl = $request->input('ProcLvl', 'Pending');
 

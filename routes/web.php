@@ -75,6 +75,7 @@ Route::group([
     'middleware' => 'auth',
 ], function () {
     Route::get('/show/product/application/form/{userid}', 'show')->name('show-product-application-form');
+    Route::post('/check-license-no', 'check_license_no')->name('check-license-no');
     Route::post('/check-cnic', 'check_cnic')->name('check-cnic');
     Route::post('/check-business','check_business')->name('check-business');
     Route::post('/check-product','check_product')->name('check-product');

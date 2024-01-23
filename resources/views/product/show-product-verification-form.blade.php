@@ -14,21 +14,58 @@
                         </div>
                         <div class="card-body">
 
-                            <div class="row">
+                            <div class="row"
+                                 style="border-width: 2px; border-style: solid; border-color: #007bff; font-weight: bold;">
                                 <!-- Owner Personal Details -->
 
 
                                 <div class="col-md-6 border p-3">
                                     <ul class="list-unstyled mb-4" style="font-size: 16px;">
-                                        <strong>Applicant Name:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <span
-                                            class="border border-primary p-1 font-weight-bold">{{ $product->business->owner->Applicant_Name }}</span><br><br>
-                                        <strong>Applicant Father Name:</strong> <span
-                                            class="border border-primary p-1 font-weight-bold">{{ $product->business->owner->Applicant_Father_Name}}</span><br><br>
-                                        <strong>Applicant CNIC:</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                            class="border border-primary p-1 font-weight-bold">{{ $product->business->owner->CNIC }}</span><br><br>
-                                        <strong>Applicant Address:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                            class="border border-primary p-1 font-weight-bold">{{ $product->business->owner->Personal_Address }}</span><br><br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>Applicant Name:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ $product->business->owner->Applicant_Name }}" readonly>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>Applicant Father Name:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ $product->business->owner->Applicant_Father_Name}}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>Applicant CNIC:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ $product->business->owner->CNIC}}" readonly>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>Applicant Address:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ $product->business->owner->Personal_Address}}"
+                                                       readonly>
+                                            </div>
+                                        </div>
 
                                     </ul>
                                 </div>
@@ -37,80 +74,200 @@
                                 <!-- Business Details -->
                                 <div class="col-md-6 border p-3">
                                     <ul class="list-unstyled mb-4" style="font-size: 16px;">
-                                        <strong class="label-with-space">Product Name:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <span
-                                            class="border border-primary p-1 font-weight-bold">{{ $product->Product_Name }}</span><br><br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>Product Name:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ $product->Product_Name}}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>Business Name:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ $product->business->Business_Name}}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>Business Type:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ $product->business->business_type->Business_Types}}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>Business Address:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ $product->business->Business_Address}}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>Contact Number:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ $product->business->Contact_Number}}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>District:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ $product->business->district->District_Name}}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <br>
 
-                                        <strong class="label-with-space">Business Name:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <span
-                                            class="border border-primary p-1 font-weight-bold">{{ $product->business->Business_Name }}</span><br><br>
-
-                                        <strong class="label-with-space">Business Type:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <span
-                                            class="border border-primary p-1 font-weight-bold">{{ $product->business->business_type->Business_Types}}</span><br><br>
-
-                                        <strong class="label-with-space">Business Address:</strong>
-                                        <span
-                                            class="border border-primary p-1 font-weight-bold">{{ $product->business->Business_Address }}</span><br><br>
-
-                                        <strong class="label-with-space">Contact Number:</strong>&nbsp;&nbsp;
-                                        <span
-                                            class="border border-primary p-1 font-weight-bold">{{ $product->business->Contact_Number }}</span><br><br>
-
-                                        <strong class="label-with-space">District:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <span
-                                            class="border border-primary p-1 font-weight-bold">{{ $product->business->district->District_Name}}</span><br><br>
                                     </ul>
                                 </div>
 
                             </div>
 
                             <!-- License Category and Inspection Details -->
-                            <div class="row mt-4">
+                            <div class="row mt-4"
+                                 style="border-width: 2px; border-style: solid; border-color: #007bff; font-weight: bold;">
                                 <div class="col-md-6 border p-3">
                                     <ul class="list-unstyled mb-4" style="font-size: 16px;">
-                                        <strong class="label-with-space">License Category:</strong>
-                                        <span
-                                            class="border border-primary p-1 font-weight-bold">{{ $product->license_category->License_Category_Name }}</span><br><br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>License Category:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ $product->license_category->License_Category_Name}}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>Due Amount:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ $product->payments->Due_Amount}}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>Paid Amount:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ $product->payments->Paid_Amount}}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>Due Date:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ $product->payments->Due_Date}}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>Deposit Date:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ $product->payments->Deposit_Date}}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>Challan No:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ $product->payments->Challan_No}}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <br>
 
-                                        <strong class="label-with-space">Due Amount:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <span
-                                            class="border border-primary p-1 font-weight-bold">{{ $product->payments->Due_Amount}}</span><br><br>
-
-                                        <strong class="label-with-space">Paid Amount:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <span
-                                            class="border border-primary p-1 font-weight-bold">{{ $product->payments->Paid_Amount }}</span><br><br>
-
-                                        <strong class="label-with-space">Due Date:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <span
-                                            class="border border-primary p-1 font-weight-bold">{{ $product->payments->Due_Date }}</span><br><br>
-
-                                        <strong class="label-with-space">Deposit Date:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <span
-                                            class="border border-primary p-1 font-weight-bold">{{ $product->payments->Deposit_Date }}</span><br><br>
-
-                                        <strong class="label-with-space">Challan No:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <span
-                                            class="border border-primary p-1 font-weight-bold">{{$product->payments->Challan_No}}</span><br><br>
                                     </ul>
                                 </div>
 
                                 <div class="col-md-6 border p-3">
                                     <ul class="list-unstyled mb-4" style="font-size: 16px;">
-                                        <strong class="label-with-space">Inspected By:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <span
-                                            class="border border-primary p-1 font-weight-bold">{{ $product->payments->Verify_By }}</span><br><br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>Inspected By:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ $product->payments->Verify_By}}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>Inspection Date:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ $product->Submit_Date}}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <br>
 
-                                        <strong class="label-with-space">Inspection Date:</strong>
-                                        <span
-                                            class="border border-primary p-1 font-weight-bold">{{ $product->Submit_Date}}</span><br><br>
                                     </ul>
                                 </div>
 
                             </div>
 
                             <!-- Images -->
-                            <div class="row mt-4">
+                            <div class="row mt-4"
+                                 style="border-width: 2px; border-style: solid; border-color: #007bff; font-weight: bold;">
                                 <div class="col-md-6 border p-3">
                                     <p class="font-weight-bold"><strong>Profile Image:</strong></p>
                                     <img
