@@ -12,14 +12,13 @@
                             <small class="text-muted float-end">Default label</small>
                         </div>
                         <div class="card-body">
+                            <br>
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Due Amount</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="Due_Amount"
-                                        value="{{ $Due_Amount }}"
+                                    <input type="text"
+                                           class="form-control border border-primary font-weight-bold"
+                                           value="{{ $Due_Amount }}" readonly>
 
                                     @if($errors->has('Due_Amount'))
                                         <span class="alert alert-danger"> {{ $errors->first('Due_Amount') }}</span>
@@ -31,12 +30,9 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Paid Amount</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="Paid_Amount"
-                                        value="{{ $Paid_Amount }}"
-                                        placeholder=""/>
+                                    <input type="text"
+                                           class="form-control border border-primary font-weight-bold"
+                                           value="{{ $Paid_Amount }}" readonly>
                                     @if($errors->has('Paid_Amount'))
                                         <span
                                             class="alert alert-danger"> {{ $errors->first('Paid_Amount') }}</span>
@@ -49,7 +45,7 @@
                                 <div class="col-sm-8">
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Due_Date"
                                         value="{{ $Due_Date }}"
                                         aria-describedby="basic-default-phone"/>
@@ -63,7 +59,7 @@
                                 <div class="col-sm-8">
                                     <input
                                         id="basic-default-message"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Deposit_Date"
                                         value="{{ $Deposit_Date }}"
                                         aria-describedby="basic-icon-default-message2"
@@ -95,7 +91,7 @@
                                 <div class="col-sm-8">
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Challan_No"
                                         value="{{ $Challan_No }}"
                                         placeholder=""/>
@@ -112,7 +108,7 @@
                                 <div class="col-sm-8">
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Transaction_Id"
                                         value="{{ $Transaction_Id }}"
                                         placeholder=""/>
@@ -129,7 +125,7 @@
                                 <div class="col-sm-8">
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Bank_Name"
                                         value="{{ $Bank_Name }}"
                                         placeholder=""/>

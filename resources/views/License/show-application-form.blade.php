@@ -12,13 +12,13 @@
                             <h5 class="mb-0">Personal Information</h5>
                             <small class="text-muted float-end">Default label</small>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body"><br>
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Applicant Name</label>
                                 <div class="col-sm-8">
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Applicant_Name"
                                         placeholder=""/>
                                     @error('Applicant_Name')
@@ -33,7 +33,7 @@
                                 <div class="col-sm-8">
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Applicant_Father_Name"
                                         placeholder=""/>
                                     @error('Applicant_Father_Name')
@@ -46,7 +46,7 @@
                                 <div class="col-sm-8">
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="CNIC"
                                         aria-describedby="basic-default-phone"/>
                                     <small class="text-muted">Enter your CNIC in the format: 12345-6789123-4</small>
@@ -60,7 +60,7 @@
                                 <div class="col-sm-8">
                                     <input
                                         id="basic-default-message"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Mobile_Number"
                                         aria-describedby="basic-icon-default-message2"
                                     />
@@ -77,7 +77,7 @@
                                 <div class="col-sm-8">
                                     <input
                                         id="basic-default-message"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Email"
                                         aria-describedby="basic-icon-default-message2"
                                     />
@@ -93,7 +93,7 @@
                                 <div class="col-sm-8">
                                     <input
                                         id="basic-default-message"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Personal_Address"
                                         aria-describedby="basic-icon-default-message2"
                                     />
@@ -106,7 +106,7 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Gender</label>
                                 <div class="col-sm-8">
-                                    <select class="form-control" name="Gender" id="genderSelect">
+                                    <select  class="form-control border border-primary font-weight-bold" name="Gender" id="genderSelect">
                                         <option value="">Select Gender</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
@@ -132,7 +132,7 @@
                                     <input
                                         type="file"
                                         id="profileImageInput"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Profile_Image"
                                         aria-describedby="basic-icon-default-message2"
                                     />
@@ -149,7 +149,7 @@
                                     <input
                                         type="file"
                                         id="cnicImageInput"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="CNIC_Image"
                                         aria-describedby="basic-icon-default-message2"
                                     />
@@ -223,7 +223,7 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Add District</label>
                                 <div class="col-sm-8">
-                                    <select name="districts[]" class="selectpicker" multiple data-live-search="true">
+                                    <select name="districts[]" class="selectpicker border border-primary font-weight-bold" multiple data-live-search="true">
                                         @foreach($districts as $district)
                                             <option
                                                 value="{{ $district['id'] }}">{{ $district['District_Name'] }}</option>
@@ -244,13 +244,13 @@
                             <h5 class="mb-0">Business Information</h5>
                             <small class="text-muted float-end">Default label</small>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body"><br>
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Business Name</label>
                                 <div class="col-sm-8">
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Business_Name"
                                         placeholder=""/>
                                     @error('Business_Name')
@@ -264,7 +264,7 @@
                                 <div class="col-sm-8">
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Business_Address"
                                         placeholder=""/>
                                     @error('Business_Address')
@@ -277,7 +277,7 @@
                                 <div class="col-sm-8">
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Contact_Number"
                                         aria-describedby="basic-default-phone"/>
                                     <small class="text-muted">Enter your Mobile Number in the format:
@@ -292,7 +292,7 @@
                                 <div class="col-sm-8">
                                     <input
                                         id="basic-default-message"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Business_Email"
                                         aria-describedby="basic-icon-default-message2"
                                     />
@@ -317,7 +317,7 @@
                                     <input
                                         type="file"
                                         id="affidavitImageInput"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Affidavit"
                                         aria-describedby="basic-icon-default-message2"
                                     />
@@ -334,7 +334,7 @@
                                     <input
                                         type="file"
                                         id="medicalcertificateImageInput"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Medical_Certificate"
                                         aria-describedby="basic-icon-default-message2"
                                     />
@@ -410,7 +410,7 @@
                                 <div class="col-sm-8">
                                     <input
                                         id="basic-default-message"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Website"
                                         aria-describedby="basic-icon-default-message2"
                                     />
@@ -425,7 +425,7 @@
                                 <div class="col-sm-8">
                                     <input
                                         id="basic-default-message"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Start_Date"
                                         aria-describedby="basic-icon-default-message2"
                                     />
@@ -441,7 +441,7 @@
                                 <div class="col-sm-8">
                                     <input
                                         id="basic-default-message"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Food_Handlers"
                                         aria-describedby="basic-icon-default-message2"
                                     />
@@ -454,7 +454,7 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Add District</label>
                                 <div class="col-sm-8">
-                                    <select name="districts[]" class="selectpicker" multiple data-live-search="true">
+                                    <select name="districts[]" class="selectpicker border border-primary font-weight-bold" multiple data-live-search="true">
                                         @foreach($districts as $district)
                                             <option
                                                 value="{{ $district['id'] }}">{{ $district['District_Name'] }}</option>
@@ -469,7 +469,7 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Add Business Type</label>
                                 <div class="col-sm-8">
-                                    <select name="businesstypes[]" class="selectpicker" multiple
+                                    <select name="businesstypes[]" class="selectpicker border border-primary font-weight-bold" multiple
                                             data-live-search="true">
                                         @foreach($businesstypes as $business)
                                             <option
@@ -491,11 +491,11 @@
                             <h5 class="mb-0">Choose License Category</h5>
                             <small class="text-muted float-end">Default label</small>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body"><br>
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Add License Categories</label>
                                 <div class="col-sm-8">
-                                    <select name="licensecategories[]" class="selectpicker" multiple
+                                    <select name="licensecategories[]" class="selectpicker border border-primary font-weight-bold" multiple
                                             data-live-search="true">
                                         @foreach($licensecategories as $licensecat)
                                             <option value="{{ $licensecat['id'] }}">

@@ -14,8 +14,11 @@
                         <div class="card-body"><br>
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Business License No</label>
-                                <div class="col-sm-8"><br>
-                                    <input type="text" id="licensenoInput" name="License_No"/>
+                                <div class="col-sm-8">
+                                    <input type="text" id="licensenoInput" class="form-control border border-primary font-weight-bold" name="License_No"/>
+                                    @error('License_No')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                     <div id="licensenoStatus"></div>
                                     <div id="businessDetails"></div>
                                 </div>
@@ -23,7 +26,7 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Enter Product Name</label>
                                 <div class="col-sm-8">
-                                    <input type="text" id="productInput" name="Product_Name"/>
+                                    <input type="text" id="productInput" class="form-control border border-primary font-weight-bold" name="Product_Name"/>
 
                                     <div id="productStatus"></div>
                                     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -73,7 +76,7 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Attach Lab Report</label>
                                     <div class="col-sm-8">
-                                        <input type="file" id="labReportInput" class="form-control"
+                                        <input type="file" id="labReportInput" class="form-control border border-primary font-weight-bold"
                                                name="Lab_Analysis_Report"
                                                aria-describedby="basic-icon-default-message2"/>
                                         @error('Lab_Analysis_Report')
@@ -86,7 +89,7 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Attach Product Image</label>
                                     <div class="col-sm-8">
-                                        <input type="file" id="productImageInput" class="form-control"
+                                        <input type="file" id="productImageInput" class="form-control border border-primary font-weight-bold"
                                                name="Product_Label" accept="image/*"/>
                                         @error('Product_Label')
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -98,7 +101,7 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Attach Affidavit</label>
                                     <div class="col-sm-8">
-                                        <input type="file" id="affidavtImageInput" class="form-control" name="Affidavit"
+                                        <input type="file" id="affidavtImageInput" class="form-control border border-primary font-weight-bold" name="Affidavit"
                                                aria-describedby="basic-icon-default-message2"/>
                                         @error('Affidavit')
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -229,7 +232,33 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-xxl-10">
+                    <div class="card mb-4">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Choose License Category</h5>
+                            <small class="text-muted float-end">Default label</small>
+                        </div>
+                        <div class="card-body"><br>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Add Product Categories</label>
+                                <div class="col-sm-8">
+                                    <select name="licensecategories[]" class="selectpicker form-control border border-primary font-weight-bold" multiple
+                                            data-live-search="true">
+                                        @foreach($licensecategories as $licensecat)
+                                            <option value="{{ $licensecat['id'] }}">
+                                                {{ $licensecat['License_Category_Name'] }}
+                                                - {{ $licensecat['License_Fee'] }}</option>
+                                        @endforeach
+                                    </select><br>
+                                    @error('licensecategories')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
 
+                        </div>
+                    </div>
+                </div>
                 <div class="row justify-content-end">
                     <div class="row justify-content-start">
                         <div class="col-sm-10">

@@ -11,14 +11,14 @@
                             <h5 class="mb-0">Issue Product Registration Number</h5>
                             <small class="text-muted float-end">Default label</small>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body"><br>
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Product Registration No</label>
                                 <div class="col-sm-8">
                                     <label>
                                         <input
                                             type="text"
-                                            class="form-control"
+                                            class="form-control border border-primary font-weight-bold"
                                             name="Product_Registration_No"
                                             value="{{ $nextProductRegNumber }}"
                                             placeholder=""/>

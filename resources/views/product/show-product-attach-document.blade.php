@@ -11,16 +11,13 @@
                             <h5 class="mb-0">Attach Documents</h5>
                             <small class="text-muted float-end">Default label</small>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body"><br>
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Due Amount</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="Due_Amount"
-                                        value="{{ $Due_Amount }}"
-                                        readonly
+                                    <input type="text"
+                                           class="form-control border border-primary font-weight-bold"
+                                           value="{{ $Due_Amount }}" readonly>
                                     @if($errors->has('Due_Amount'))
                                         <span class="alert alert-danger"> {{ $errors->first('Due_Amount') }}</span>
                                         <br>
@@ -31,11 +28,10 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Paid Amount</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="Paid_Amount"
-                                        placeholder=""/>
+                                    <input type="text"
+                                           class="form-control border border-primary font-weight-bold"
+                                           name="Paid_Amount"
+                                           placeholder=""/>
                                     @if($errors->has('Paid_Amount'))
                                         <span
                                             class="alert alert-danger"> {{ $errors->first('Paid_Amount') }}</span>
@@ -46,13 +42,11 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Due Date</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="Due_Date"
-                                        value="{{ $Due_Date }}"
-                                        readonly
-                                        aria-describedby="basic-default-phone"/>
+                                    <input type="text"
+                                           class="form-control border border-primary font-weight-bold"
+                                           value="{{ $Due_Date }}"
+                                           readonly
+                                           aria-describedby="basic-default-phone"/>
                                     @if($errors->has('Due_Date'))
                                         <span class="alert alert-danger"> {{ $errors->first('Due_Date') }}</span><br>
                                     @endif
@@ -61,11 +55,10 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Deposit Date</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        id="basic-default-message"
-                                        class="form-control"
-                                        name="Deposit_Date"
-                                        aria-describedby="basic-icon-default-message2"
+                                    <input type="text"
+                                           class="form-control border border-primary font-weight-bold"
+                                           name="Deposit_Date"
+                                           aria-describedby="basic-icon-default-message2"
                                     />
                                     @if($errors->has('Deposit_Date'))
                                         <span class="alert alert-danger"> {{ $errors->first('Deposit_Date') }}</span>
@@ -88,7 +81,7 @@
                                     <input
                                         type="file"
                                         id="challanImageInput"
-                                        class="form-control"
+                                        class="form-control border border-primary font-weight-bold"
                                         name="Challan_Image"
                                         aria-describedby="basic-icon-default-message2"
                                     />
@@ -138,11 +131,10 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Challan Number</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="Challan_No"
-                                        placeholder=""/>
+                                    <input type="text"
+                                           class="form-control border border-primary font-weight-bold"
+                                           name="Challan_No"
+                                           placeholder=""/>
                                     @if($errors->has('Challan_No'))
                                         <span class="alert alert-danger"> {{ $errors->first('Challan_No') }}</span>
                                         <br>
@@ -153,11 +145,10 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Remarks</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="Remarks"
-                                        placeholder=""/>
+                                    <input type="text"
+                                           class="form-control border border-primary font-weight-bold"
+                                           name="Remarks"
+                                           placeholder=""/>
                                     @if($errors->has('Remarks'))
                                         <span class="alert alert-danger"> {{ $errors->first('Remarks') }}</span>
                                         <br>
@@ -168,11 +159,10 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Transaction ID</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="Transaction_Id"
-                                        placeholder=""/>
+                                    <input type="text"
+                                           class="form-control border border-primary font-weight-bold"
+                                           name="Transaction_Id"
+                                           placeholder=""/>
                                     @if($errors->has('Transaction_Id'))
                                         <span class="alert alert-danger"> {{ $errors->first('Transaction_Id') }}</span>
                                         <br>
@@ -184,7 +174,8 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Bank_Name</label>
                                 <div class="col-sm-8">
-                                    <select class="form-control" name="Bank_Name">
+                                    <select class="form-control border border-primary font-weight-bold"
+                                            name="Bank_Name">
                                         <option value="">Select Bank</option>
                                         @foreach ($banks as $bank)
                                             <option value="{{ $bank }}">{{ $bank }}</option>
@@ -200,11 +191,10 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Branch Code</label>
                                 <div class="col-sm-8">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        name="Branch_Code"
-                                        placeholder=""/>
+                                    <input type="text"
+                                           class="form-control border border-primary font-weight-bold"
+                                           name="Branch_Code"
+                                           placeholder=""/>
                                     @if($errors->has('Branch_Code'))
                                         <span class="alert alert-danger"> {{ $errors->first('Branch_Code') }}</span>
                                         <br>

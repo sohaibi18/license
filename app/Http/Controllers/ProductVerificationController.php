@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LicenseNumberIssueRequest;
+use App\Http\Requests\ProductRegistrationNumberIssueRequest;
 use App\Models\LicenseApplication;
 use App\Models\Payment;
 use App\Models\ProductApplication;
@@ -59,6 +60,7 @@ class ProductVerificationController extends Controller
 
         return view('product.product-verified-successfully', compact('successMessage'));
     }
+
     public function show($userid): View
     {
         $product = ProductApplication::where('ProcLvl', 'License Approved')
@@ -85,7 +87,7 @@ class ProductVerificationController extends Controller
         ]);
     }
 
-    public function issue_Product_number($userid, $id, Request $request): View
+    public function issue_Product_number($userid, $id, ProductRegistrationNumberIssueRequest $request): View
     {
         $product = ProductApplication::where('id', $id)->first();
         $expireDate = Carbon::now()->addYears(2);

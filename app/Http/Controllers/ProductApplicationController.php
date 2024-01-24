@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ApplicantDataEntryRequest;
+use App\Http\Requests\ProductDataEntryRequest;
+use App\Http\Requests\ProductPaymentEntryRequest;
 use App\Models\Business;
 use App\Models\BusinessType;
 use App\Models\District;
@@ -50,7 +52,7 @@ class ProductApplicationController extends Controller
         return response()->json(['exists' => $product !== null]);
     }
 
-    public function store($id, Request $request): RedirectResponse
+    public function store($id, ProductDataEntryRequest $request): RedirectResponse
     {
 
         $labreport = $request->file('Lab_Analysis_Report')->store('', 'public');
@@ -66,6 +68,7 @@ class ProductApplicationController extends Controller
 
             $businessId = $businesses->business_id;
             $business = $businesses->business;
+            $ownerId = $business->owner->id;
         }
 
 
@@ -156,7 +159,7 @@ class ProductApplicationController extends Controller
         ]);
     }
 
-    public function store_payment($id, Request $request): View
+    public function store_payment($id, ProductPaymentEntryRequest $request): View
     {
         $payment = Payment::where('product_application_id', $id)->first();
 

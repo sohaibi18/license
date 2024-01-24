@@ -32,16 +32,19 @@ class ApplicantDataEntryRequest extends FormRequest
             'Gender' => ['required'],
             'Profile_Image' => ['required', 'image'],
             'CNIC_Image' => ['required', 'image'],
+            'districts' => ['required'],
 
 
             //Business Details
-            'Business_Name' => ['required', 'regex:/^[a-zA-Z\s]+$/i'],
+            'Business_Name' => ['required', 'regex:/^[a-zA-Z0-9\s]+$/i'],
             'Business_Address' => ['required', 'regex:/^[a-zA-Z0-9\s]+$/'],
             'Contact_Number' => ['required', 'regex:/^\d{4}-\d{7}$/'],
             'Business_Email' => ['nullable', 'email'],
             'Website' => ['nullable', 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/'],
             'Start_Date' => ['nullable', 'date', 'before_or_equal:today'],
             'Food_Handlers' => ['nullable', 'numeric'],
+            'businesstypes' => ['required'],
+            'licensecategories' => ['required'],
 
 
             //Application Details
