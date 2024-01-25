@@ -3,6 +3,7 @@
 use App\Http\Controllers\FinanceVerificationController;
 use App\Http\Controllers\LicenseApplicationController;
 use App\Http\Controllers\LicenseVerificationController;
+use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\ProductApplicationController;
 use App\Http\Controllers\ProductFinanceVerificationController;
 use App\Http\Controllers\ProductVerificationController;
@@ -76,9 +77,7 @@ Route::group([
 ], function () {
     Route::get('/show/product/application/form/{userid}', 'show')->name('show-product-application-form');
     Route::post('/check-license-no', 'check_license_no')->name('check-license-no');
-    Route::post('/check-cnic', 'check_cnic')->name('check-cnic');
-    Route::post('/check-business','check_business')->name('check-business');
-    Route::post('/check-product','check_product')->name('check-product');
+    Route::post('/check-product', 'check_product')->name('check-product');
     Route::post('/store/product/data/{id}', 'store')->name('store-product-data');
     Route::get('/show/product/submitted/applications', 'show_applications')->name('show-submitted-applications');
     Route::get('/attach/product/documents/{id}', 'attach_documents')->name('attach-documents');
@@ -109,4 +108,14 @@ Route::group([
     Route::get('/print/product/{userid}/{id}', 'print_product')->name('print_product');
 });
 
+Route::group([
+    'controller' => OwnerController::class,
+    'middleware' => 'auth',
+], function () {
+    Route::get('/show/licensee/details/{userid}', 'show')->name('check_cnic_no');
+    Route::post('/show/licensee/information/form/{cnic}', 'licensee_information')->name('license_information');
+    Route::get('/show/licensee/information/form/{cnic}', 'licensee_information')->name('license_information');
+    Route::post('/check-cnic-no', 'check_cnic_no')->name('check-cnic-no');
+
+});
 require __DIR__ . '/auth.php';

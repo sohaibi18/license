@@ -59,6 +59,6 @@ class Business extends Model
 
     public function product_applications(): HasMany
     {
-        return $this->hasMany(ProductApplicationController::class);
+        return $this->hasMany(ProductApplication::class);
     }
 }

@@ -28,14 +28,14 @@
                                 <span class="text-success">{{ $product->ProcLvl }}</span><br>
                             @endif
                             Product Application No: {{ $product->id }}<br>
-
+                            Product Name: {{ $product->Product_Name }}
 
                             @if($product->business->owner)
                                 Owner Name: {{ $product->business->owner->Applicant_Name }}<br>
                                 Owner Father Name: {{ $product->business->owner->Applicant_Father_Name }}<br>
                             @endif
                             License Category: {{ $product->license_category->License_Category_Name }}<br>
-                            Product Registration No: {{ $product->Product_Registration_No }}
+                            Product Registration No: {{ $product->Product_Registration_No }}<br>
 
 
                         </td>
@@ -51,7 +51,8 @@
                         </td>
                         <td>
                             <a href="/print/product/{{ $userid }}/{{ $product->id }}">
-                                <button type="button" class="btn rounded-pill btn-primary">Print Product Registration</button>
+                                <button type="button" class="btn rounded-pill btn-primary">Print Product Registration
+                                </button>
                             </a>
                         </td>
                     </tr>

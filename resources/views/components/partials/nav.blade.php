@@ -202,7 +202,29 @@
             </ul>
         @endif
     </li>
+    <li class="menu-item">
+        <a href="javascript:void(0)" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-copy"></i>
+            <div data-i18n="Extended UI">Licensee Details</div>
+        </a>
+        @if(auth()->check())
+            @php
+                $loggedInUserId = auth()->id();
+            @endphp
+            <ul class="menu-sub">
+                @if($loggedInUserId == 5 or $loggedInUserId == 1)
+                    <li class="menu-item">
 
+                        <!-- Pass the authenticated user's ID in the URL -->
+                        <a href="/show/licensee/details/{{ auth()->id() }}" class="menu-link">
+                            <div data-i18n="Without menu">Licensee Information</div>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+
+        @endif
+    </li>
     <li class="menu-header small text-uppercase">
         <span class="menu-header-text">Pages</span>
     </li>
