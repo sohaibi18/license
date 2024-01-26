@@ -30,7 +30,7 @@ class OwnerController extends Controller
         return response()->json(['exists' => $owner !== null]);
     }
 
-    public function licensee_information($cnic)
+    public function licensee_information($cnic): View
     {
         $ownercnic = Owner::where('CNIC', $cnic)->first();
 
@@ -54,4 +54,32 @@ class OwnerController extends Controller
         return view('owner.owner-not-found');
     }
 
+    public function check_license_no(Request $request)
+    {
+        $licenseno = $request->input('License_No');
+        $licenses = LicenseApplication::where('License_No', $licenseno)->first();
+
+
+        return response()->json(['exists' => $licenses !== null]);
+    }
+
+    public function license_information($licenseno)
+    {
+        $licenses = LicenseApplication::where('License_No', $licenseno)->first();
+        if ($licenses) {
+            $business = Business::find($licenses->business_id);
+
+            if ($business) {
+                $owner = Owner::find($business->owner_id);
+                $product = ProductApplication::find($business->business_id);
+                return view('owner.license-information', [
+                    'owner' => $owner,
+                    'business' => $business,
+                    'licenses' => $licenses,
+                    'products' => $product,
+                ]);
+            }
+        }
+        return view('owner.owner-not-found');
+    }
 }

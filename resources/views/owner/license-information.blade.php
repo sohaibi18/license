@@ -78,7 +78,7 @@
                                                 </div>
                                                 <div class="col-md-8">
 
-                                                    @if($products->isNotEmpty())
+                                                    @if(isset($products) && $products->isNotEmpty())
                                                         @foreach($products as $product)
                                                             <input type="text"
                                                                    class="form-control border border-primary font-weight-bold"
@@ -88,6 +88,7 @@
                                                     @else
                                                         <p class="text-muted">No products found</p>
                                                     @endif
+
                                                 </div>
                                             </div>
                                             <br>
@@ -159,6 +160,8 @@
                             <div class="row mt-4"
                                  style="border-width: 2px; border-style: solid; border-color: #007bff; font-weight: bold;">
                                 @foreach($licenses as $license)
+                                    dd($license);
+
                                     <div class="col-md-6 border p-3">
                                         <ul class="list-unstyled mb-4" style="font-size: 16px;">
                                             <h4>License Information</h4>
@@ -166,33 +169,33 @@
                                                 <div class="col-md-3">
                                                     <strong>License Category:</strong>
                                                 </div>
+
+
                                                 <div class="col-md-8">
                                                     <input type="text"
                                                            class="form-control border border-primary font-weight-bold"
-                                                           value="{{  $license->license_category->License_Category_Name}}"
+                                                           value="{{ $license->license_category->License_Category_Name }}"
                                                            readonly>
+
                                                 </div>
                                             </div>
                                             <br>
-
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <strong>Product Category:</strong>
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        @if(optional(optional($license->business->product_applications)->first())->license_category)
-                                                        <input type="text"
-                                                               class="form-control border border-primary font-weight-bold"
-                                                               value="{{ optional(optional($license->business->product_applications)->first())->license_category->License_Category_Name }}"
-                                                               readonly>
-                                                        @else
-                                                            <p>N/A.</p>
-                                                        @endif
-                                                    </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <strong>Product Category:</strong>
                                                 </div>
-                                                <br>
+                                                <div class="col-md-8">
 
 
+                                                    <input type="text"
+                                                           class="form-control border border-primary font-weight-bold"
+                                                           value="{{ optional($license->business->product_applications->first())->license_category->License_Category_Name ?? 'N/A' }}"
+                                                           readonly>
+
+                                                </div>
+                                            </div>
+
+                                            <br>
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <strong>Paid Amount:</strong>
@@ -274,7 +277,7 @@
 
                                 <div class="col-md-6 border p-3">
                                     <h4>Lab Report</h4>
-                                    @if($products->isNotEmpty())
+                                    @if(isset($products) && $products->isNotEmpty())
                                         @foreach($products as $product)
                                             <img
                                                 src="{{ asset('storage/' . urlencode($product->Lab_Analysis_Report)) }}"
@@ -287,7 +290,7 @@
 
                                 <div class="col-md-6 border p-3">
                                     <h4>Product Label</h4>
-                                    @if($products->isNotEmpty())
+                                    @if(isset($products) && $products->isNotEmpty())
                                         @foreach($products as $product)
                                             <img src="{{ asset('storage/' . urlencode($product->Product_Label)) }}"
                                                  alt="Product Label Image" style="max-width: 50%;">

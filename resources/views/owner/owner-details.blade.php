@@ -1,6 +1,6 @@
 <x-layouts.app>
     <div class="container-xxl flex-grow-1 container-p-y">
-        <form method="POST" action="/show/licensee/information/form" enctype="multipart/form-data" id="licenseeForm">
+        <form method="POST" action="/show/license/information/form" enctype="multipart/form-data" id="licenseForm">
             @csrf
             <!-- Basic Layout -->
             <div class="row">
@@ -44,6 +44,46 @@
 
                                                     // Update the form action with the CNIC value
                                                     $('#licenseeForm').attr('action', '/show/licensee/information/form/' + cnic);
+                                                }
+                                            });
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Enter License No</label>
+                                <div class="col-sm-8">
+                                    <input type="text" id="licensenoInput"
+                                           class="form-control border border-primary font-weight-bold"
+                                           name="License_No"/>
+                                    @error('License_No')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    <div id="licensenoStatus"></div>
+                                </div>
+                                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                                <script>
+                                    $(document).ready(function () {
+                                        $('#licensenoInput').on('input', function () {
+                                            var licenseno = $(this).val();
+
+                                            $.ajax({
+                                                url: "{{ route('check-license-no') }}",
+                                                method: "POST",
+                                                data: {"_token": "{{ csrf_token() }}", "License_No": licenseno},
+                                                success: function (response) {
+                                                    if (licenseno === '') {
+                                                        $('#licensenoStatus').text('');
+                                                    } else if (response.exists) {
+                                                        $('#licensenoStatus').text('License exists!');
+                                                    } else {
+                                                        $('#licensenoStatus').text('License does not exist.');
+                                                    }
+
+                                                    // Update the form action with the CNIC value
+                                                    $('#licenseForm').attr('action', '/show/license/information/form/' + licenseno);
                                                 }
                                             });
                                         });

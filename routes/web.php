@@ -76,7 +76,7 @@ Route::group([
     'middleware' => 'auth',
 ], function () {
     Route::get('/show/product/application/form/{userid}', 'show')->name('show-product-application-form');
-    Route::post('/check-license-no', 'check_license_no')->name('check-license-no');
+    Route::post('/check-license', 'check_license_no')->name('check-license');
     Route::post('/check-product', 'check_product')->name('check-product');
     Route::post('/store/product/data/{id}', 'store')->name('store-product-data');
     Route::get('/show/product/submitted/applications', 'show_applications')->name('show-submitted-applications');
@@ -113,9 +113,10 @@ Route::group([
     'middleware' => 'auth',
 ], function () {
     Route::get('/show/licensee/details/{userid}', 'show')->name('check_cnic_no');
-    Route::post('/show/licensee/information/form/{cnic}', 'licensee_information')->name('license_information');
-    Route::get('/show/licensee/information/form/{cnic}', 'licensee_information')->name('license_information');
+    Route::post('/show/licensee/information/form/{cnic}', 'licensee_information')->name('licensee_information');
+    Route::post('/show/license/information/form/{licenseno}', 'license_information')->name('license_information');
+    Route::get('/show/licensee/information/form/{cnic}', 'licensee_information')->name('licensee_information');
     Route::post('/check-cnic-no', 'check_cnic_no')->name('check-cnic-no');
-
+    Route::post('/check-license-no', 'check_license_no')->name('check-license-no');
 });
 require __DIR__ . '/auth.php';

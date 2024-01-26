@@ -118,7 +118,7 @@
                                         var licenseno = $(this).val();
 
                                         $.ajax({
-                                            url: "{{ route('check-license-no') }}",
+                                            url: "{{ route('check-license') }}", // Change to 'check-license'
                                             method: "POST",
                                             data: {"_token": "{{ csrf_token() }}", "License_No": licenseno},
                                             success: function (response) {
@@ -144,6 +144,7 @@
                                     });
                                 });
                             </script>
+
                             <script>
                                 document.getElementById('productImageInput').addEventListener('change', function () {
                                     var fileInput = this;
