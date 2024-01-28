@@ -28,9 +28,9 @@ class ProductApplication extends Model
         'Printed_Date', 'Dispatched_Date', 'license_category_id'
     ];
 
-    public function business():BelongsTo
+    public function business(): BelongsTo
     {
-        return $this->belongsTo(Business::class,'business_id');
+        return $this->belongsTo(Business::class, 'business_id');
     }
 
     public function user(): BelongsTo
@@ -43,10 +43,11 @@ class ProductApplication extends Model
         return $this->hasOne(Owner::class);
     }
 
-    public function license_category(): BelongsTo
+    public function licenseCategory(): BelongsTo
     {
-        return $this->belongsTo(LicenseCategory::class);
+        return $this->belongsTo(LicenseCategory::class, 'license_category_id');
     }
+
     public function payment(): BelongsTo
     {
         return $this->belongsTo(Payment::class);

@@ -11,10 +11,19 @@ class LicenseCategory extends Model
 {
     use HasFactory;
     protected $table = 'license_categories';
-    protected $guarded = ['*'];
+    protected $fillable = [
+      'License_Category_Name',
+      'License_Fee',
+
+    ];
 
     public function license_applications(): HasMany
     {
         return $this->hasMany(LicenseApplication::class);
+    }
+
+    public function product_applications(): HasMany
+    {
+        return $this->hasMany(ProductApplication::class);
     }
 }

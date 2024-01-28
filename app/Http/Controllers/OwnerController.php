@@ -65,13 +65,16 @@ class OwnerController extends Controller
 
     public function license_information($licenseno)
     {
-        $licenses = LicenseApplication::where('License_No', $licenseno)->first();
+        $licenses = LicenseApplication::with(['licenseCategory', 'business.owner', 'business.product_applications.licenseCategory'])
+            ->where('License_No', $licenseno)
+            ->first();
         if ($licenses) {
             $business = Business::find($licenses->business_id);
 
             if ($business) {
                 $owner = Owner::find($business->owner_id);
-                $product = ProductApplication::find($business->business_id);
+                $product = ProductApplication::where('business_id', $business->id)->get();
+
                 return view('owner.license-information', [
                     'owner' => $owner,
                     'business' => $business,

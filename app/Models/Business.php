@@ -57,8 +57,10 @@ class Business extends Model
         return $this->hasMany(LicenseApplication::class);
     }
 
-    public function product_applications(): HasMany
+    // Business.php model
+    public function product_applications()
     {
-        return $this->hasMany(ProductApplication::class);
+        return $this->hasMany(ProductApplication::class, 'business_id', 'id');
     }
+
 }

@@ -182,7 +182,8 @@ class LicenseApplicationController extends Controller
             'Deposit_Date' => $request->Deposit_Date ?? $payment->Deposit_Date,
             'Verified_Date' => null,
             'Verify_By' => null,
-            'Challan_Image' => $request->file('Challan_Image') ? $request->file('Challan_Image')->store('', 'public') : $payment->Challan_Image,
+            'Challan_Image' => $request->file('Challan_Image') ? $request->file('Challan_Image')
+                ->store('', 'public') : $payment->Challan_Image,
             'Challan_No' => $request->Challan_No ?? $payment->Challan_No,
             'Remarks' => $request->Remarks ?? $payment->Remarks,
             'Transaction_Id' => $request->Transaction_Id ?? $payment->Transaction_Id,
