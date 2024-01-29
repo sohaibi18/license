@@ -1,16 +1,18 @@
+
 <x-layouts.app>
     <div class="container-xxl flex-grow-1 container-p-y">
-        <form method="POST" action="/show/license/information/form" enctype="multipart/form-data" id="licenseForm">
-            @csrf
-            <!-- Basic Layout -->
-            <div class="row">
-                <!-- Personal Information -->
-                <div class="col-xxl-12">
-                    <!-- Licensee Details Card -->
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <h5 class="mb-0">Licensee Details</h5>
-                        </div>
+
+        <div class="row">
+
+            <div class="col-xxl-12">
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Licensee Details</h5>
+                    </div>
+                    <form method="POST" action="/show/licensee/information/form/" enctype="multipart/form-data"
+                          id="LicenseeForm">
+                        @csrf
                         <div class="card-body">
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Enter Owner CNIC</label>
@@ -42,8 +44,7 @@
                                                         $('#ownerStatus').text('Licensee does not exist.');
                                                     }
 
-                                                    // Update the form action with the CNIC value
-                                                    $('#licenseeForm').attr('action', '/show/licensee/information/form/' + cnic);
+                                                    $('#LicenseeForm').attr('action', '/show/licensee/information/form/' + cnic);
                                                 }
                                             });
                                         });
@@ -51,6 +52,11 @@
                                 </script>
                             </div>
                         </div>
+                    </form>
+
+                    <form method="POST" action="/show/license/information/form/" enctype="multipart/form-data"
+                          id="LicenseForm">
+                        @csrf
                         <div class="card-body">
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Enter License No</label>
@@ -82,8 +88,8 @@
                                                         $('#licensenoStatus').text('License does not exist.');
                                                     }
 
-                                                    // Update the form action with the CNIC value
-                                                    $('#licenseForm').attr('action', '/show/license/information/form/' + licenseno);
+
+                                                    $('#LicenseForm').attr('action', '/show/license/information/form/' + licenseno);
                                                 }
                                             });
                                         });
@@ -91,16 +97,40 @@
                                 </script>
                             </div>
                         </div>
-                    </div>
+                    </form>
+                </div>
 
-                    <!-- Approval Button -->
-                    <div class="row justify-content-start">
-                        <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary">Owner Details</button>
-                        </div>
+
+                <div class="row justify-content-start">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary" onclick="submitForm()">Search</button>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
+    <script>
+        var isLicenseeForm = true;
+
+        function submitForm() {
+            var form;
+
+            if (isLicenseeForm) {
+                form = document.getElementById("LicenseForm");
+            } else {
+                form = document.getElementById("LicenseeForm");
+            }
+
+            if (form) {
+                form.submit();
+            } else {
+                console.error("Form not found!");
+            }
+
+            // Toggle the form for the next click
+            isLicenseeForm = !isLicenseeForm;
+        }
+    </script>
+
 </x-layouts.app>
+
