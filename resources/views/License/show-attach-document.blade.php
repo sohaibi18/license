@@ -138,6 +138,8 @@
                                         type="text"
                                         class="form-control border border-primary font-weight-bold"
                                         name="Challan_No"
+                                        value="{{ $Challan_No }}"
+                                        readonly
                                         placeholder=""/>
                                     @if($errors->has('Challan_No'))
                                         <span class="alert alert-danger"> {{ $errors->first('Challan_No') }}</span>

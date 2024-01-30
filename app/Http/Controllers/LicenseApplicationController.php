@@ -16,6 +16,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Carbon\Carbon;
+use function Sodium\add;
 
 class LicenseApplicationController extends Controller
 {
@@ -104,6 +105,7 @@ class LicenseApplicationController extends Controller
         $licensefeedate = $license->Submit_Date;
         $licensefeeduedate = clone $licensefeedate; // create a copy to avoid modifying the original object
         $licensefeeduedate->modify('+1 month');
+        $challanNo = time() . mt_rand(1000, 9999);
 
         $payment = Payment::create([
             'license_application_id' => $licenseid,
@@ -114,7 +116,7 @@ class LicenseApplicationController extends Controller
             'Verified_Date' => null,
             'Verify_By' => null,
             'Challan_Image' => null,
-            'Challan_No' => null,
+            'Challan_No' => $challanNo,
             'Remarks' => null,
             'Transaction_Id' => null,
             'Bank_Name' => null,
@@ -156,6 +158,7 @@ class LicenseApplicationController extends Controller
         $payment = Payment::where('license_application_id', $id)->first();
         $dueAmount = $payment->Due_Amount;
         $dueDate = $payment->Due_Date;
+        $challanno = $payment->Challan_No;
 
         // Manually define enum values
         $banks = ['MCB', 'UBL', 'EasyPaisa', 'JazzCash'];
@@ -165,16 +168,16 @@ class LicenseApplicationController extends Controller
             'id' => $id,
             'Due_Amount' => $dueAmount,
             'Due_Date' => $dueDate,
+            'Challan_No' => $challanno,
             'banks' => $banks,
         ]);
     }
 
     public function store_payment($id, PaymentDataEntryRequest $request): View
     {
-        // Fetch the existing payment record
+
         $payment = Payment::where('license_application_id', $id)->first();
 
-        // Update the payment record with new data
         $payment->update([
 //            if $request have data then this will be saved in table otherwise already present data in table which is
 //            stored in $payment will be remain same in table as previously.
