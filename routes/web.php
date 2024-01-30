@@ -44,6 +44,7 @@ Route::group([
     Route::post('/display/submitted/data/{id}', 'store')->name('display-submitted-data');
     Route::get('/show/submitted/applications', 'show_applications')->name('show-submitted-applications');
     Route::get('/attach/licensee/documents/{id}', 'attach_documents')->name('attach-documents');
+    Route::get('/generate/challan/{id}', 'generate_challan')->name('generate-challan');
     Route::post('/licensee/payment/details/{id}', 'store_payment')->name('store-payment');
 });
 

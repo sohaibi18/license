@@ -31,10 +31,20 @@
 
                         </td>
                         <td>
+
                             <a href="/attach/licensee/documents/{{$licenseapplication->id}}">
                                 <button type="button" class="btn rounded-pill btn-primary">Attach Documents</button>
                             </a>
+                            <br><br>
+
+                            @if($licenseapplication->payments)
+                                <a href="/generate/challan/{{$licenseapplication->payments->id}}">
+                                    <button type="button" class="btn rounded-pill btn-primary">Generate Challan</button>
+                                </a>
+                            @endif
                         </td>
+
+
                     </tr>
                 @endforeach
                 </tbody>

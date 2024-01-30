@@ -122,21 +122,22 @@ class LicenseApplicationController extends Controller
             'Bank_Name' => null,
             'Branch_Code' => null,
         ]);
+
         return redirect('/dashboard')->with('success', 'License Application created successfully. ID: ' . $license->id);
 
     }
 
+
     public function show_applications(): View
     {
         // Get all license applications
-        $licenseapplications = LicenseApplication::all();
+        $licenseapplications = LicenseApplication::with('payment')->get();
 
         // Get the list of processed payment application IDs
         $processedPaymentIds = Payment::where('Due_Amount', '>', 0)
             ->where('Paid_Amount', '>', 0) // Add conditions for Paid_Amount
             ->whereNotNull('Deposit_Date')  // Add conditions for Deposit_Date
             ->whereNotNull('Challan_Image') // Add conditions for Challan_Image
-            ->whereNotNull('Challan_No')     // Add conditions for Challan_No
             ->whereNotNull('Transaction_Id') // Add conditions for Transaction_Id
             ->pluck('license_application_id')
             ->toArray();
@@ -147,11 +148,29 @@ class LicenseApplicationController extends Controller
             return in_array($licenseapplication->id, $processedPaymentIds);
         });
 
+
         return view('license.display-submitted-applications', [
             'licenseapplications' => $filteredLicenseApplications,
         ]);
     }
 
+    public function generate_challan($paymentId): View
+    {
+
+        $payment = Payment::find($paymentId);
+        $licenseApplication = LicenseApplication::find($payment->license_application_id);
+        $business = Business::find($licenseApplication->business_id);
+        $owner = Owner::find($business->owner_id);
+        $bankAccountNo = '13117661811000530';
+        $dueAmount = $payment->Due_Amount;
+        return view('license.challan-generate', [
+            'payment' => $payment,
+            'bankAccountNo' => $bankAccountNo,
+            'owners' => $owner,
+            'businesses' => $business,
+            'Due_Amount' => $dueAmount,
+        ]);
+    }
 
     public function attach_documents($id): View
     {
