@@ -63,7 +63,7 @@ class OwnerController extends Controller
         return response()->json(['exists' => $licenses !== null]);
     }
 
-    public function license_information($licenseno)
+    public function license_information($licenseno): View
     {
         $licenses = LicenseApplication::with(['licenseCategory', 'business.owner', 'business.product_applications.licenseCategory'])
             ->where('License_No', $licenseno)
@@ -76,6 +76,38 @@ class OwnerController extends Controller
                 $product = ProductApplication::where('business_id', $business->id)->get();
 
                 return view('owner.license-information', [
+                    'owner' => $owner,
+                    'business' => $business,
+                    'licenses' => $licenses,
+                    'products' => $product,
+                ]);
+            }
+        }
+        return view('owner.owner-not-found');
+    }
+
+    public function check_application_no(Request $request)
+    {
+        $applicationno = $request->input('License_Application_No');
+        $licenses = LicenseApplication::where('id', $applicationno)->first();
+
+
+        return response()->json(['exists' => $licenses !== null]);
+    }
+
+    public function license_details($applicationno): View
+    {
+        $licenses = LicenseApplication::with(['licenseCategory', 'business.owner', 'business.product_applications.licenseCategory'])
+            ->where('id', $applicationno)
+            ->first();
+        if ($licenses) {
+            $business = Business::find($licenses->business_id);
+
+            if ($business) {
+                $owner = Owner::find($business->owner_id);
+                $product = ProductApplication::where('business_id', $business->id)->get();
+
+                return view('owner.license-details', [
                     'owner' => $owner,
                     'business' => $business,
                     'licenses' => $licenses,

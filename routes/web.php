@@ -116,9 +116,12 @@ Route::group([
     Route::get('/show/licensee/details/{userid}', 'show')->name('check_cnic_no');
     Route::post('/show/licensee/information/form/{cnic}', 'licensee_information')->name('licensee_information');
     Route::post('/show/license/information/form/{licenseno}', 'license_information')->name('license_information');
+    Route::post('/show/license/details/appid/{applicationno}', 'license_details')->name('license_details');
+    Route::get('/show/license/details/appid/{applicationno}', 'license_details')->name('license_details');
     Route::get('/show/license/information/form/{licenseno}', 'license_information')->name('license_information');
     Route::get('/show/licensee/information/form/{cnic}', 'licensee_information')->name('licensee_information');
     Route::post('/check-cnic-no', 'check_cnic_no')->name('check-cnic-no');
     Route::post('/check-license-no', 'check_license_no')->name('check-license-no');
+    Route::post('/check-application-no', 'check_application_no')->name('check-application-no');
 });
 require __DIR__ . '/auth.php';

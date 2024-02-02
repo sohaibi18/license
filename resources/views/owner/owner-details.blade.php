@@ -1,4 +1,3 @@
-
 <x-layouts.app>
     <div class="container-xxl flex-grow-1 container-p-y">
 
@@ -11,7 +10,7 @@
                         <h5 class="mb-0">Licensee Details</h5>
                     </div>
                     <form method="POST" action="/show/licensee/information/form/" enctype="multipart/form-data"
-                          id="LicenseeForm">
+                          class="search-form" id="LicenseeForm">
                         @csrf
                         <div class="card-body">
                             <div class="row mb-3">
@@ -54,8 +53,9 @@
                         </div>
                     </form>
 
+
                     <form method="POST" action="/show/license/information/form/" enctype="multipart/form-data"
-                          id="LicenseForm">
+                          class="search-form" id="LicenseForm">
                         @csrf
                         <div class="card-body">
                             <div class="row mb-3">
@@ -98,39 +98,77 @@
                             </div>
                         </div>
                     </form>
+
+                    <form method="POST" action="/show/license/details/appid/" enctype="multipart/form-data"
+                          class="search-form" id="ApplicationidForm">
+                        @csrf
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Enter Application ID</label>
+                                <div class="col-sm-8">
+                                    <input type="text" id="applicationnoInput"
+                                           class="form-control border border-primary font-weight-bold"
+                                           name="License_Application_No"/>
+                                    @error('License_Application_No')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    <div id="applicationnoStatus"></div>
+                                </div>
+                                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                                <script>
+                                    $(document).ready(function () {
+                                        $('#applicationnoInput').on('input', function () {
+                                            var applicationno = $(this).val();
+
+                                            $.ajax({
+                                                url: "{{ route('check-application-no') }}",
+                                                method: "POST",
+                                                data: {
+                                                    "_token": "{{ csrf_token() }}",
+                                                    "License_Application_No": applicationno
+                                                },
+                                                success: function (response) {
+                                                    if (applicationno === '') {
+                                                        $('#applicationnoStatus').text('');
+                                                    } else if (response.exists) {
+                                                        $('#applicationnoStatus').text('Application exists!');
+                                                    } else {
+                                                        $('#applicationnoStatus').text('Application does not exist.');
+                                                    }
+
+
+                                                    $('#ApplicationidForm').attr('action', '/show/license/details/appid/' + applicationno);
+                                                }
+                                            });
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
 
                 <div class="row justify-content-start">
                     <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary" onclick="submitForm()">Search</button>
+                        <button type="button" class="btn btn-primary" onclick="submitForms()">Search</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <script>
-        var isLicenseeForm = true;
-
-        function submitForm() {
-            var form;
-
-            if (isLicenseeForm) {
-                form = document.getElementById("LicenseForm");
-            } else {
-                form = document.getElementById("LicenseeForm");
-            }
-
-            if (form) {
-                form.submit();
-            } else {
-                console.error("Form not found!");
-            }
-
-            // Toggle the form for the next click
-            isLicenseeForm = !isLicenseeForm;
+        function submitForms() {
+            // Iterate over each form with the 'search-form' class
+            $(".search-form").each(function () {
+                // Get the form's ID and submit it
+                var formId = $(this).attr('id');
+                $("#" + formId).submit();
+            });
         }
     </script>
 
 </x-layouts.app>
+
 
