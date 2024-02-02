@@ -225,6 +225,60 @@
 
         @endif
     </li>
+    <li class="menu-item">
+        <a href="javascript:void(0)" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-copy"></i>
+            <div data-i18n="Extended UI">Assign Roles and  Permissions</div>
+        </a>
+        @if(auth()->check())
+            @php
+                $loggedInUserId = auth()->id();
+            @endphp
+            <ul class="menu-sub">
+                @if($loggedInUserId == 1)
+                    <li class="menu-item">
+
+                        <!-- Pass the authenticated user's ID in the URL -->
+                        <a href="/{{ auth()->id() }}" class="menu-link">
+                            <div data-i18n="Without menu">Create Roles</div>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+        @endif
+        @if(auth()->check())
+            @php
+                $loggedInUserId = auth()->id();
+            @endphp
+            <ul class="menu-sub">
+                @if($loggedInUserId == 1)
+                    <li class="menu-item">
+
+                        <!-- Pass the authenticated user's ID in the URL -->
+                        <a href="/{{ auth()->id() }}" class="menu-link">
+                            <div data-i18n="Without menu">Create Permissions</div>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+        @endif
+        @if(auth()->check())
+            @php
+                $loggedInUserId = auth()->id();
+            @endphp
+            <ul class="menu-sub">
+                @if($loggedInUserId == 1)
+                    <li class="menu-item">
+
+                        <!-- Pass the authenticated user's ID in the URL -->
+                        <a href="/{{ auth()->id() }}" class="menu-link">
+                            <div data-i18n="Without menu">Assign Roles and Permissions</div>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+        @endif
+    </li>
     <li class="menu-header small text-uppercase">
         <span class="menu-header-text">Pages</span>
     </li>
