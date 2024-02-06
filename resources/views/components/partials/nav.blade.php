@@ -240,6 +240,22 @@
 
                         <!-- Pass the authenticated user's ID in the URL -->
                         <a href="/{{ auth()->id() }}" class="menu-link">
+                            <div data-i18n="Without menu">Create Users</div>
+                        </a>
+                    </li>
+                @endif
+            </ul>
+        @endif
+        @if(auth()->check())
+            @php
+                $loggedInUserId = auth()->id();
+            @endphp
+            <ul class="menu-sub">
+                @if($loggedInUserId == 1)
+                    <li class="menu-item">
+
+                        <!-- Pass the authenticated user's ID in the URL -->
+                        <a href="/{{ auth()->id() }}" class="menu-link">
                             <div data-i18n="Without menu">Create Roles</div>
                         </a>
                     </li>
