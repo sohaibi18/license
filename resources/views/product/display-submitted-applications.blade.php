@@ -27,7 +27,7 @@
                             Product Name: {{ $productapplication->Product_Name }} <br>
                             Business Name: {{ $productapplication->business->Business_Name }} <br>
                             Business Address: {{ $productapplication->business->Business_Address }} <br>
-                            Product Category: {{ $productapplication->license_category->License_Category_Name }} <br>
+                            Product Category: {{ $productapplication->licenseCategory->License_Category_Name }} <br>
 
                         </td>
                         <td>

@@ -16,6 +16,7 @@ class DistrictSeeder extends Seeder
     {
         $District = $this->CreateDistt();
 
+
     }
 
     private function CreateDistt()
