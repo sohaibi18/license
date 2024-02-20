@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductApplicationController;
 use App\Http\Controllers\ProductFinanceVerificationController;
 use App\Http\Controllers\ProductVerificationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -123,5 +124,14 @@ Route::group([
     Route::post('/check-cnic-no', 'check_cnic_no')->name('check-cnic-no');
     Route::post('/check-license-no', 'check_license_no')->name('check-license-no');
     Route::post('/check-application-no', 'check_application_no')->name('check-application-no');
+});
+
+Route::group([
+    'controller' => UserController::class,
+    'middleware' => 'auth',
+], function () {
+    Route::get('/show/users/{id}', 'show_users')->name('show-users');
+    Route::get('/create/users/{id}', 'create_user')->name('create-user');
+    Route::post('/add/user/{id}', 'store_user')->name('store-user');
 });
 require __DIR__ . '/auth.php';

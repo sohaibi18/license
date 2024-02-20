@@ -30,6 +30,6 @@ class RolesAndPermissionsSeeder extends Seeder
         $superadminrole->permissions()->save($addapplication);
 
         //assign roles to users
-        
+
     }
 }
