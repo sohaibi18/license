@@ -287,7 +287,7 @@
                     <li class="menu-item">
 
                         <!-- Pass the authenticated user's ID in the URL -->
-                        <a href="/{{ auth()->id() }}" class="menu-link">
+                        <a href="show/roles/permissions/{{ auth()->id() }}" class="menu-link">
                             <div data-i18n="Without menu">Assign Roles and Permissions</div>
                         </a>
                     </li>
