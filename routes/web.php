@@ -4,6 +4,7 @@ use App\Http\Controllers\FinanceVerificationController;
 use App\Http\Controllers\LicenseApplicationController;
 use App\Http\Controllers\LicenseVerificationController;
 use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductApplicationController;
 use App\Http\Controllers\ProductFinanceVerificationController;
 use App\Http\Controllers\ProductVerificationController;
@@ -144,6 +145,14 @@ Route::group([
     Route::get('/show/roles/{id}', 'show_roles')->name('show-roles');
     Route::get('/create/roles/{id}', 'create_role')->name('create-role');
     Route::post('/add/role/{id}', 'store_role')->name('store-role');
+});
 
+Route::group([
+    'controller' => PermissionController::class,
+    'middleware' => 'auth',
+], function () {
+    Route::get('/show/permissions/{id}', 'show_permissions')->name('show-permissions');
+    Route::get('/create/permissions/{id}', 'create_permission')->name('create-permission');
+    Route::post('/add/permission/{id}', 'store_permission')->name('store-permission');
 });
 require __DIR__ . '/auth.php';
