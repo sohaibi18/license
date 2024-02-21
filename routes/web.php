@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductApplicationController;
 use App\Http\Controllers\ProductFinanceVerificationController;
 use App\Http\Controllers\ProductVerificationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -131,7 +132,18 @@ Route::group([
     'middleware' => 'auth',
 ], function () {
     Route::get('/show/users/{id}', 'show_users')->name('show-users');
+    Route::post('/show/users/{id}', 'show_users')->name('show-users');
     Route::get('/create/users/{id}', 'create_user')->name('create-user');
     Route::post('/add/user/{id}', 'store_user')->name('store-user');
+});
+
+Route::group([
+    'controller' => RoleController::class,
+    'middleware' => 'auth',
+], function () {
+    Route::get('/show/roles/{id}', 'show_roles')->name('show-roles');
+    Route::get('/create/roles/{id}', 'create_role')->name('create-role');
+    Route::post('/add/role/{id}', 'store_role')->name('store-role');
+
 });
 require __DIR__ . '/auth.php';

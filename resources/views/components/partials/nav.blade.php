@@ -255,7 +255,7 @@
                     <li class="menu-item">
 
                         <!-- Pass the authenticated user's ID in the URL -->
-                        <a href="/{{ auth()->id() }}" class="menu-link">
+                        <a href="/show/roles/{{ auth()->id() }}" class="menu-link">
                             <div data-i18n="Without menu">Create Roles</div>
                         </a>
                     </li>

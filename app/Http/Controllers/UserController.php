@@ -15,10 +15,11 @@ class UserController extends Controller
     public function show_users($id)
     {
         $users = User::all();
-        return \view('users.show-users',[
-           'users' => $users, 'id' => $id,
+        return \view('users.show-users', [
+            'users' => $users, 'id' => $id,
         ]);
     }
+
     public function create_user($userid): View
     {
         $id = $userid;
@@ -27,6 +28,7 @@ class UserController extends Controller
 
     public function store_user($id, Request $request)
     {
+        $user = User::all();
         // Validation rules
         $rules = [
             'name' => 'required',
@@ -50,6 +52,6 @@ class UserController extends Controller
             'remember_token' => Str::random(60),
         ]);
 
-        return \view('/dashboard');
+        return \view('users.show-users', ['users' => $user, 'id' => $id]);
     }
 }
