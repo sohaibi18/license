@@ -162,6 +162,7 @@ Route::group([
     'middleware' => 'auth',
 ], function () {
     Route::get('/show/roles/permissions/{id}', 'show_roles_permissions')->name('show-roles-permissions');
-
+    Route::get('/assign/roles/permissions/{id}', 'assign_roles_permissions')->name('assign-roles-permissions');
+    Route::post('/save/roles/permissions/{id}', 'save_roles_permissions')->name('save-roles-permissions');
 });
 require __DIR__ . '/auth.php';

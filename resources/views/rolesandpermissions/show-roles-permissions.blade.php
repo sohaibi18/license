@@ -38,7 +38,7 @@
 
                 </tbody>
             </table>
-            <a href="/assign/roles/permissions{{$id}}">
+            <a href="/assign/roles/permissions/{{$id}}">
                 <button type="button" class="btn rounded-pill btn-primary">Assign Role and Permissions</button>
             </a>
             <br>
