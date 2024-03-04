@@ -29,7 +29,6 @@ class RoleAndPermissionController extends Controller
 
     public function save_roles_permissions($id, Request $request)
     {
-
         $userId = $request->input('user_id');
         $user = User::findOrFail($userId);
 
@@ -37,17 +36,30 @@ class RoleAndPermissionController extends Controller
         $selectedRoles = $request->input('roles', []);
         $selectedPermissions = $request->input('permissions', []);
 
+        // Check if roles are already assigned to the user
+        $existingRoles = $user->roles()->whereIn('roles.id', $selectedRoles)->pluck('roles.id')->toArray();
+        if (!empty($existingRoles)) {
+            return redirect()->back()->withErrors(['roles' => 'Selected roles are already assigned to the user.'])->withInput();
+        }
+
         // Attach selected roles to the user
         $user->roles()->attach($selectedRoles);
 
         // Attach selected permissions to the roles
         foreach ($selectedRoles as $roleId) {
             $role = Role::findOrFail($roleId);
+
+            // Check if permissions are already assigned to the role
+            $existingPermissions = $role->permissions()->whereIn('permissions.id', $selectedPermissions)->pluck('permissions.id')->toArray();
+            if (!empty($existingPermissions)) {
+                return redirect()->back()->withErrors(['permissions' => 'Selected permissions are already assigned to the role.'])->withInput();
+            }
+
             $role->permissions()->attach($selectedPermissions);
         }
 
         $users = User::all();
         return \view('rolesandpermissions.show-roles-permissions', ['users' => $users, 'id' => $id]);
-
     }
+
 }
