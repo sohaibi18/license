@@ -14,101 +14,90 @@
             <div data-i18n="Layouts">License Registration</div>
         </a>
 
-        @if(auth()->check())
-            @php
-                $loggedInUserId = auth()->id();
-            @endphp
 
-            <ul class="menu-sub">
-                @if($loggedInUserId == 5 or $loggedInUserId == 1)
-                    <li class="menu-item">
-                        <!-- Pass the authenticated user's ID in the URL -->
-                        <a href="/show/application/form/{{ $loggedInUserId }}" class="menu-link">
-                            <div data-i18n="Without menu">Add License Application</div>
-                        </a>
-                    </li>
-                @endif
-            </ul>
+        <ul class="menu-sub">
 
-            <!-- Display user information -->
-            {{-- <p>Hello, {{ auth()->user()->name }}!</p> --}}
+            <li class="menu-item">
+                <!-- Pass the authenticated user's ID in the URL -->
+                @can('viewlicprodappform', auth()->user())
+                    <a href="/show/application/form/{{ auth()->id() }}" class="menu-link">
+                        <div data-i18n="Without menu">Add License Application</div>
+                    </a>
+                @endcan
+            </li>
+
+        </ul>
 
 
-            <ul class="menu-sub">
-                @if($loggedInUserId == 5 or $loggedInUserId == 1)
-                    <li class="menu-item">
+        <ul class="menu-sub">
 
-                        <a href="/show/submitted/applications" class="menu-link">
-                            <div data-i18n="Perfect Scrollbar">License Submitted Applications</div>
-                        </a>
-                    </li>
-                @endif
-            </ul>
+            <li class="menu-item">
 
+                <a href="/show/submitted/applications" class="menu-link">
+                    <div data-i18n="Perfect Scrollbar">License Submitted Applications</div>
+                </a>
+            </li>
 
-            <ul class="menu-sub">
-                @if($loggedInUserId == 3 or $loggedInUserId == 1)
-                    <li class="menu-item">
-
-                        <!-- Pass the authenticated user's ID in the URL -->
-                        <a href="/application/finance/verification/{{ auth()->id() }}" class="menu-link">
-                            <div data-i18n="Without menu">License Finance Pending Applications</div>
-                        </a>
-                    </li>
-                @endif
-            </ul>
-            <!-- Display user information -->
-            {{--            <p>Hello, {{ auth()->user()->name }}!</p>--}}
+        </ul>
 
 
+        <ul class="menu-sub">
 
-            <ul class="menu-sub">
-                @if($loggedInUserId == 6 or $loggedInUserId == 1)
-                    <li class="menu-item">
-                        <!-- Pass the authenticated user's ID in the URL -->
+            <li class="menu-item">
 
-                        <a href="/application/license/verification/{{ auth()->id() }}" class="menu-link">
-                            <div data-i18n="Without menu">License Approval Pending Applications</div>
-                        </a>
-                    </li>
-                @endif
-            </ul>
-            <!-- Display user information -->
-            {{--            <p>Hello, {{ auth()->user()->name }}!</p>--}}
+                <!-- Pass the authenticated user's ID in the URL -->
+                <a href="/application/finance/verification/{{ auth()->id() }}" class="menu-link">
+                    <div data-i18n="Without menu">License Finance Pending Applications</div>
+                </a>
+            </li>
+
+        </ul>
 
 
+        <ul class="menu-sub">
 
-            <ul class="menu-sub">
-                @if($loggedInUserId == 4 or $loggedInUserId == 1)
-                    <li class="menu-item">
+            <li class="menu-item">
+                <!-- Pass the authenticated user's ID in the URL -->
+                @can('licenseapproval', auth()->user())
+                    <a href="/application/license/verification/{{ auth()->id() }}" class="menu-link">
+                        <div data-i18n="Without menu">License Approval Pending Applications</div>
+                    </a>
+                @endcan
+            </li>
 
-                        <!-- Pass the authenticated user's ID in the URL -->
-                        <a href="/show/applications/{{ auth()->id() }}" class="menu-link">
-                            <div data-i18n="Without menu">License NotIssued Pending Applications</div>
-                        </a>
-                    </li>
-                @endif
-            </ul>
-            <!-- Display user information -->
-            {{--            <p>Hello, {{ auth()->user()->name }}!</p>--}}
+        </ul>
 
 
+        <ul class="menu-sub">
 
-            <ul class="menu-sub">
-                @if($loggedInUserId == 4 or $loggedInUserId == 1)
-                    <li class="menu-item">
+            <li class="menu-item">
 
-                        <!-- Pass the authenticated user's ID in the URL -->
-                        <a href="/show/print_ready_applications/{{ auth()->id() }}" class="menu-link">
-                            <div data-i18n="Without menu">Print Ready Applications</div>
-                        </a>
-                    </li>
-                @endif
-            </ul>
-            <!-- Display user information -->
-            {{--            <p>Hello, {{ auth()->user()->name }}!</p>--}}
+                <!-- Pass the authenticated user's ID in the URL -->
+                <a href="/show/applications/{{ auth()->id() }}" class="menu-link">
+                    <div data-i18n="Without menu">License NotIssued Pending Applications</div>
+                </a>
+            </li>
 
-        @endif
+        </ul>
+        <!-- Display user information -->
+        {{--            <p>Hello, {{ auth()->user()->name }}!</p>--}}
+
+
+        <ul class="menu-sub">
+
+            <li class="menu-item">
+
+                <!-- Pass the authenticated user's ID in the URL -->
+                <a href="/show/print_ready_applications/{{ auth()->id() }}" class="menu-link">
+                    <div data-i18n="Without menu">Print Ready Applications</div>
+                </a>
+            </li>
+
+        </ul>
+        <!-- Display user information -->
+        {{--            <p>Hello, {{ auth()->user()->name }}!</p>--}}
+
+
     </li>
 
     <!-- Salary -->
@@ -117,183 +106,160 @@
             <i class="menu-icon tf-icons bx bx-copy"></i>
             <div data-i18n="Extended UI">Product Registration</div>
         </a>
-        @if(auth()->check())
-            @php
-                $loggedInUserId = auth()->id();
-            @endphp
-            <ul class="menu-sub">
-                @if($loggedInUserId == 5 or $loggedInUserId == 1)
-                    <li class="menu-item">
 
-                        <!-- Pass the authenticated user's ID in the URL -->
-                        <a href="/show/product/application/form/{{ auth()->id() }}" class="menu-link">
-                            <div data-i18n="Without menu">Add Product Application</div>
-                        </a>
-                    </li>
-                @endif
-            </ul>
+        <ul class="menu-sub">
 
-            <ul class="menu-sub">
-                @if($loggedInUserId == 5 or $loggedInUserId == 1)
-                    <li class="menu-item">
+            <li class="menu-item">
 
-                        <!-- Pass the authenticated user's ID in the URL -->
-                        <a href="/show/product/submitted/applications" class="menu-link">
-                            <div data-i18n="Without menu">Product Submitted Applications</div>
-                        </a>
-                    </li>
-                @endif
-            </ul>
+                <!-- Pass the authenticated user's ID in the URL -->
+                <a href="/show/product/application/form/{{ auth()->id() }}" class="menu-link">
+                    <div data-i18n="Without menu">Add Product Application</div>
+                </a>
+            </li>
 
-            <ul class="menu-sub">
-                @if($loggedInUserId == 3 or $loggedInUserId == 1)
-                    <li class="menu-item">
+        </ul>
 
-                        <!-- Pass the authenticated user's ID in the URL -->
-                        <a href="/product/application/finance/verification/{{ auth()->id() }}" class="menu-link">
-                            <div data-i18n="Without menu">Product Finance Pending Applications</div>
-                        </a>
-                    </li>
-                @endif
-            </ul>
+        <ul class="menu-sub">
 
-            <ul class="menu-sub">
-                @if($loggedInUserId == 6 or $loggedInUserId == 1)
-                    <li class="menu-item">
-                        <!-- Pass the authenticated user's ID in the URL -->
+            <li class="menu-item">
 
-                        <a href="/application/product/verification/{{ auth()->id() }}" class="menu-link">
-                            <div data-i18n="Without menu">Product Approval Pending Applications</div>
-                        </a>
-                    </li>
-                @endif
-            </ul>
-            <!-- Display user information -->
-            {{--            <p>Hello, {{ auth()->user()->name }}!</p>--}}
+                <!-- Pass the authenticated user's ID in the URL -->
+                <a href="/show/product/submitted/applications" class="menu-link">
+                    <div data-i18n="Without menu">Product Submitted Applications</div>
+                </a>
+            </li>
+
+        </ul>
+
+        <ul class="menu-sub">
+
+            <li class="menu-item">
+
+                <!-- Pass the authenticated user's ID in the URL -->
+                <a href="/product/application/finance/verification/{{ auth()->id() }}" class="menu-link">
+                    <div data-i18n="Without menu">Product Finance Pending Applications</div>
+                </a>
+            </li>
+
+        </ul>
+
+        <ul class="menu-sub">
+
+            <li class="menu-item">
+                <!-- Pass the authenticated user's ID in the URL -->
+
+                <a href="/application/product/verification/{{ auth()->id() }}" class="menu-link">
+                    <div data-i18n="Without menu">Product Approval Pending Applications</div>
+                </a>
+            </li>
+
+        </ul>
+        <!-- Display user information -->
+        {{--            <p>Hello, {{ auth()->user()->name }}!</p>--}}
 
 
+        <ul class="menu-sub">
 
-            <ul class="menu-sub">
-                @if($loggedInUserId == 4 or $loggedInUserId == 1)
-                    <li class="menu-item">
+            <li class="menu-item">
 
-                        <!-- Pass the authenticated user's ID in the URL -->
-                        <a href="/show/product/applications/{{ auth()->id() }}" class="menu-link">
-                            <div data-i18n="Without menu">Product NotIssued Pending Applications</div>
-                        </a>
-                    </li>
-                @endif
-            </ul>
-            <!-- Display user information -->
-            {{--            <p>Hello, {{ auth()->user()->name }}!</p>--}}
+                <!-- Pass the authenticated user's ID in the URL -->
+                <a href="/show/product/applications/{{ auth()->id() }}" class="menu-link">
+                    <div data-i18n="Without menu">Product NotIssued Pending Applications</div>
+                </a>
+            </li>
 
+        </ul>
+        <!-- Display user information -->
+        {{--            <p>Hello, {{ auth()->user()->name }}!</p>--}}
 
 
-            <ul class="menu-sub">
-                @if($loggedInUserId == 4 or $loggedInUserId == 1)
-                    <li class="menu-item">
+        <ul class="menu-sub">
 
-                        <!-- Pass the authenticated user's ID in the URL -->
-                        <a href="/show/product/print_ready_applications/{{ auth()->id() }}" class="menu-link">
-                            <div data-i18n="Without menu">Print Ready Applications</div>
-                        </a>
-                    </li>
-                @endif
-            </ul>
-        @endif
+            <li class="menu-item">
+
+                <!-- Pass the authenticated user's ID in the URL -->
+                <a href="/show/product/print_ready_applications/{{ auth()->id() }}" class="menu-link">
+                    <div data-i18n="Without menu">Print Ready Applications</div>
+                </a>
+            </li>
+
+        </ul>
+
     </li>
     <li class="menu-item">
         <a href="javascript:void(0)" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons bx bx-copy"></i>
             <div data-i18n="Extended UI">Licensee Details</div>
         </a>
-        @if(auth()->check())
-            @php
-                $loggedInUserId = auth()->id();
-            @endphp
-            <ul class="menu-sub">
-                @if($loggedInUserId == 5 or $loggedInUserId == 1)
-                    <li class="menu-item">
 
-                        <!-- Pass the authenticated user's ID in the URL -->
-                        <a href="/show/licensee/details/{{ auth()->id() }}" class="menu-link">
-                            <div data-i18n="Without menu">Licensee Information</div>
-                        </a>
-                    </li>
-                @endif
-            </ul>
+        <ul class="menu-sub">
 
-        @endif
+            <li class="menu-item">
+
+                <!-- Pass the authenticated user's ID in the URL -->
+                <a href="/show/licensee/details/{{ auth()->id() }}" class="menu-link">
+                    <div data-i18n="Without menu">Licensee Information</div>
+                </a>
+            </li>
+
+        </ul>
+
+
     </li>
     <li class="menu-item">
         <a href="javascript:void(0)" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons bx bx-copy"></i>
-            <div data-i18n="Extended UI">Assign Roles and  Permissions</div>
+            <div data-i18n="Extended UI">Assign Roles and Permissions</div>
         </a>
-        @if(auth()->check())
-            @php
-                $loggedInUserId = auth()->id();
-            @endphp
-            <ul class="menu-sub">
-                @if($loggedInUserId == 1)
-                    <li class="menu-item">
 
-                        <!-- Pass the authenticated user's ID in the URL -->
-                        <a href="/show/users/{{ auth()->id() }}" class="menu-link">
-                            <div data-i18n="Without menu">Create Users</div>
-                        </a>
-                    </li>
-                @endif
-            </ul>
-        @endif
-        @if(auth()->check())
-            @php
-                $loggedInUserId = auth()->id();
-            @endphp
-            <ul class="menu-sub">
-                @if($loggedInUserId == 1)
-                    <li class="menu-item">
+        <ul class="menu-sub">
 
-                        <!-- Pass the authenticated user's ID in the URL -->
-                        <a href="/show/roles/{{ auth()->id() }}" class="menu-link">
-                            <div data-i18n="Without menu">Create Roles</div>
-                        </a>
-                    </li>
-                @endif
-            </ul>
-        @endif
-        @if(auth()->check())
-            @php
-                $loggedInUserId = auth()->id();
-            @endphp
-            <ul class="menu-sub">
-                @if($loggedInUserId == 1)
-                    <li class="menu-item">
+            <li class="menu-item">
 
-                        <!-- Pass the authenticated user's ID in the URL -->
-                        <a href="show/permissions/{{ auth()->id() }}" class="menu-link">
-                            <div data-i18n="Without menu">Create Permissions</div>
-                        </a>
-                    </li>
-                @endif
-            </ul>
-        @endif
-        @if(auth()->check())
-            @php
-                $loggedInUserId = auth()->id();
-            @endphp
-            <ul class="menu-sub">
-                @if($loggedInUserId == 1)
-                    <li class="menu-item">
+                <!-- Pass the authenticated user's ID in the URL -->
+                <a href="/show/users/{{ auth()->id() }}" class="menu-link">
+                    <div data-i18n="Without menu">Create Users</div>
+                </a>
+            </li>
 
-                        <!-- Pass the authenticated user's ID in the URL -->
-                        <a href="show/roles/permissions/{{ auth()->id() }}" class="menu-link">
-                            <div data-i18n="Without menu">Assign Roles and Permissions</div>
-                        </a>
-                    </li>
-                @endif
-            </ul>
-        @endif
+        </ul>
+
+        <ul class="menu-sub">
+
+            <li class="menu-item">
+
+                <!-- Pass the authenticated user's ID in the URL -->
+                <a href="/show/roles/{{ auth()->id() }}" class="menu-link">
+                    <div data-i18n="Without menu">Create Roles</div>
+                </a>
+            </li>
+
+        </ul>
+
+        <ul class="menu-sub">
+
+            <li class="menu-item">
+
+                <!-- Pass the authenticated user's ID in the URL -->
+                <a href="show/permissions/{{ auth()->id() }}" class="menu-link">
+                    <div data-i18n="Without menu">Create Permissions</div>
+                </a>
+            </li>
+
+        </ul>
+
+        <ul class="menu-sub">
+
+            <li class="menu-item">
+
+                <!-- Pass the authenticated user's ID in the URL -->
+                <a href="show/roles/permissions/{{ auth()->id() }}" class="menu-link">
+                    <div data-i18n="Without menu">Assign Roles and Permissions</div>
+                </a>
+            </li>
+
+        </ul>
+
     </li>
     <li class="menu-header small text-uppercase">
         <span class="menu-header-text">Pages</span>
