@@ -15,14 +15,39 @@ class LicensePolicy
         return null;
     }
 
-    public function viewlicprodappform(User $user)
+    public function license(User $user)
     {
 
-       return $user->hasPermission('licprod-applications');
+        return $user->hasPermission('license');
     }
 
-//    public function licenseapproval(User $user)
-//    {
-//        return $user->hasRole('license-approval');
-//    }
+    public function finance(User $user)
+    {
+
+        return $user->hasPermission('finance');
+    }
+
+    public function license_divisional(User $user)
+    {
+
+        return $user->hasPermission('license-divisional');
+    }
+
+    public function license_district(User $user)
+    {
+
+        return $user->hasPermission('license-district');
+    }
+
+    public function license_issue_print_draft(User $user)
+    {
+
+        return $user->hasPermission('license-issue-print-draft');
+    }
+    public function complete_access(User $user)
+    {
+
+        return $user->hasPermission('complete-access');
+    }
+
 }
