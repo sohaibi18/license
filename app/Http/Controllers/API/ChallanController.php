@@ -41,6 +41,13 @@ class ChallanController extends Controller
         $licenseappid = $requestData['license_application_id'];
         $challanimage = 'Bank Auto Verified';
         $remarks = 'Recommended';
+
+        // Check if payment details already exist for the given Challan_No
+        $existingPayment = Payment::where('Challan_No', $challanNo)->exists();
+        if ($existingPayment) {
+            return response()->json(['error' => 'Payment details already exist for the given Challan_No'], 400);
+        }
+        
         $payment = Payment::where('Challan_No', $challanNo)->first();
         if ($payment) {
             $payment->update([
