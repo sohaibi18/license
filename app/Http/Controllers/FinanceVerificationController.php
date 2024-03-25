@@ -18,11 +18,10 @@ class FinanceVerificationController extends Controller
     public function display_For_Verification($userid): View
     {
         // Get applications where at least one of the specified fields is null
-        $payment = Payment::with('license_applications')
+        $payments = Payment::with('license_applications')
             ->where(function ($query) {
-                $query->whereNull('Deposit_Date')
-                    ->orWhereNull('Verified_Date')
-                    ->orWhereNull('Verify_By')
+                $query->whereNull('Paid_Amount')
+                    ->orWhereNull('Deposit_Date')
                     ->orWhereNull('Challan_Image')
                     ->orWhereNull('Challan_No')
                     ->orWhereNull('Transaction_Id');
@@ -32,7 +31,7 @@ class FinanceVerificationController extends Controller
         // Pass the data to the view
         return view('license.finance-verification', [
             'userid' => $userid,
-            'payments' => $payment,
+            'payments' => $payments,
         ]);
     }
 

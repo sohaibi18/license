@@ -217,6 +217,18 @@
                                             </div>
                                         </div>
                                         <br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>Challan Image:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ $license->payments->Challan_Image}}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <br>
 
                                     </ul>
                                 </div>
@@ -270,11 +282,6 @@
                                         alt="CNIC Image" style="max-width: 50%;">
                                 </div>
 
-                                <div class="col-md-6 border p-3">
-                                    <p class="font-weight-bold"><strong>Challan Image:</strong></p>
-                                    <img src="{{ asset('storage/' . urlencode($license->payments->Challan_Image)) }}"
-                                         alt="Lab Report Image" style="max-width: 50%;">
-                                </div>
 
 
                             </div>
