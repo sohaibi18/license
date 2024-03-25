@@ -15,17 +15,20 @@ use Carbon\Carbon;
 
 class FinanceVerificationController extends Controller
 {
+
     public function display_For_Verification($userid): View
     {
         // Get applications where at least one of the specified fields is null
         $payments = Payment::with('license_applications')
+            ->join('license_applications', 'payments.license_application_id', '=', 'license_applications.id')
             ->where(function ($query) {
-                $query->whereNull('Paid_Amount')
-                    ->orWhereNull('Deposit_Date')
-                    ->orWhereNull('Challan_Image')
-                    ->orWhereNull('Challan_No')
-                    ->orWhereNull('Transaction_Id');
+                $query->wherenotNull('payments.Paid_Amount')
+                    ->orWherenotNull('payments.Deposit_Date')
+                    ->orWherenotNull('payments.Challan_Image')
+                    ->orWherenotNull('payments.Challan_No')
+                    ->orWherenotNull('payments.Transaction_Id');
             })
+            ->where('license_applications.ProcLvl', 'Submitted')
             ->get();
 
         // Pass the data to the view

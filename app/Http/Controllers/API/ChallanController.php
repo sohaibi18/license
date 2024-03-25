@@ -47,7 +47,7 @@ class ChallanController extends Controller
         if ($existingPayment) {
             return response()->json(['error' => 'Payment details already exist for the given Challan_No'], 400);
         }
-        
+
         $payment = Payment::where('Challan_No', $challanNo)->first();
         if ($payment) {
             $payment->update([

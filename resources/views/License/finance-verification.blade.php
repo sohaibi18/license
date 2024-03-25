@@ -23,7 +23,7 @@
                 @endphp
 
                 @foreach($payments as $payment)
-                    {{-- Skip the entire row if license_applications is null --}}
+
                     @if ($payment->license_applications)
                         <tr>
                             <td>{{ $serialNumber++ }}</td>
