@@ -197,8 +197,24 @@
             </li>
 
         </ul>
+    </li>
+    <li class="menu-item">
+        <a href="javascript:void(0)" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-copy"></i>
+            <div data-i18n="Extended UI">Modifications in license</div>
+        </a>
 
+        <ul class="menu-sub">
 
+            <li class="menu-item">
+                @can('license', auth()->user())
+                    <a href="/show/license/category/{{ auth()->id() }}" class="menu-link">
+                        <div data-i18n="Without menu">Update License Category</div>
+                    </a>
+                @endcan
+            </li>
+
+        </ul>
     </li>
     <li class="menu-item">
         @can('complete_access', auth()->user())

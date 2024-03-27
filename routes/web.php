@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FinanceVerificationController;
 use App\Http\Controllers\LicenseApplicationController;
+use App\Http\Controllers\LicenseModificationController;
 use App\Http\Controllers\LicenseVerificationController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\PermissionController;
@@ -164,5 +165,13 @@ Route::group([
     Route::get('/show/roles/permissions/{id}', 'show_roles_permissions')->name('show-roles-permissions');
     Route::get('/assign/roles/permissions/{id}', 'assign_roles_permissions')->name('assign-roles-permissions');
     Route::post('/save/roles/permissions/{id}', 'save_roles_permissions')->name('save-roles-permissions');
+});
+
+Route::group([
+    'controller' => LicenseModificationController::class,
+    'middleware' => 'auth',
+], function () {
+    Route::get('/show/license/category/{userid}', 'show')->name('show');
+
 });
 require __DIR__ . '/auth.php';

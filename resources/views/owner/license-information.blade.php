@@ -175,6 +175,7 @@
                                                        value="{{ optional($licenses->licenseCategory)->License_Category_Name ?? 'N/A' }}"
                                                        readonly>
                                             </div>
+
                                         </div>
                                         <br>
                                         <div class="row">
@@ -207,6 +208,18 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <strong>Paid Amount:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="text"
+                                                       class="form-control border border-primary font-weight-bold"
+                                                       value="{{ optional($licenses->payments)->Challan_No }}"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <strong>Update License Category:</strong>
                                             </div>
                                             <div class="col-md-8">
                                                 <input type="text"

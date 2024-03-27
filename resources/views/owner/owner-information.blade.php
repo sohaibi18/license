@@ -10,6 +10,7 @@
                         <div class="card-header">
                             <h5 class="mb-0">License Details</h5>
                         </div>
+                        </div>
                         <div class="card-body">
 
                             <div class="row"
@@ -172,7 +173,9 @@
                                                            value="{{  $license->license_category->License_Category_Name}}"
                                                            readonly>
                                                 </div>
+
                                             </div>
+
                                             <br>
 
                                                 <div class="row">
