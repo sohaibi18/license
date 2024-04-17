@@ -174,7 +174,15 @@
                                                        class="form-control border border-primary font-weight-bold"
                                                        value="{{ optional($licenses->licenseCategory)->License_Category_Name ?? 'N/A' }}"
                                                        readonly>
+                                                <br>
+                                                <a href="/show/update/license/category/{{$licenses->id}}">
+                                                    <button type="button" class="btn rounded-pill btn-primary">Update
+                                                        Category
+                                                    </button>
+                                                </a>
                                             </div>
+
+
                                         </div>
                                         <br>
                                         <div class="row">

@@ -172,6 +172,7 @@ Route::group([
     'middleware' => 'auth',
 ], function () {
     Route::get('/show/license/category/{userid}', 'show')->name('show');
-
+    Route::get('/show/update/license/category/{id}', 'show_update_category')->name('show-update-category');
+    Route::post('/update/license/category/{id}', 'update_category')->name('update-category');
 });
 require __DIR__ . '/auth.php';

@@ -1,3 +1,4 @@
+
 <x-layouts.app>
     <div class="container-xxl flex-grow-1 container-p-y">
 
@@ -154,6 +155,8 @@
                         <button type="button" class="btn btn-primary" onclick="submitForms()">Search</button>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>
@@ -169,6 +172,10 @@
         }
     </script>
 
+
+
 </x-layouts.app>
+
+
 
 

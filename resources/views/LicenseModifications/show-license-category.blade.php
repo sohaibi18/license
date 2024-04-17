@@ -151,23 +151,29 @@
 
                 <div class="row justify-content-start">
                     <div class="col-sm-10">
-                        <button type="button" class="btn btn-primary" onclick="submitForms()">Search</button>
+                        <button type="button" class="btn btn-primary" onclick="submitForm()">Search</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+{{--    <script>--}}
+{{--        function submitForms() {--}}
+{{--            // Iterate over each form with the 'search-form' class--}}
+{{--            $(".search-form").each(function () {--}}
+{{--                // Get the form's ID and submit it--}}
+{{--                var formId = $(this).attr('id');--}}
+{{--                $("#" + formId).submit();--}}
+{{--            });--}}
+{{--        }--}}
+{{--    </script>--}}
     <script>
-        function submitForms() {
-            // Iterate over each form with the 'search-form' class
-            $(".search-form").each(function () {
-                // Get the form's ID and submit it
-                var formId = $(this).attr('id');
-                $("#" + formId).submit();
-            });
+        function submitForm(formId) {
+            $("#" + formId).submit();
         }
     </script>
+
 
 </x-layouts.app>
 
